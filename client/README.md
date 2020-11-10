@@ -16,6 +16,7 @@ You will need the following things properly installed on your computer.
 
 *  from parent folder
 * `cd client`
+* `ember install ember-ajax`
 * `npm install`
 
 ## Running / Development
@@ -55,3 +56,7 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+
+
+  to generate route ember generate route login
+  it will create a templare and route.js file. template is where u render out your component

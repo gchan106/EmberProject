@@ -1,0 +1,16 @@
+<div style="border: 1px solid purple;">
+
+WELCOME TO OUR PAGE
+
+{{#if this.model.name}}
+    <p>Welcome {{@model.name}}</p>
+    <ProfilePage
+        @model={{model}}
+    />
+
+{{else}}
+    <LoginUi/>
+{{/if}}
+{{outlet}}
+
+</div>

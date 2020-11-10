@@ -7,10 +7,5 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
-  this.route('login',{path:'/'});
-  this.route('home');
-  // this.route('signup');
-  // this.route('profile');
-  // this.route('activebets');
-  // this.route('createbet');
+  this.route('login');
 });

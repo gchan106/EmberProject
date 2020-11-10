@@ -1,8 +1,4 @@
-import DS from 'ember-data';
-import ENV from 'client/config/environment';
+import JSONAPIAdapter from '@ember-data/adapter/json-api';
 
-
-export default DS.RESTAdapter.extend({
-    //api endpoint is the localhost
-    host: ENV.APP.API_ENDPOINT
-});
+export default class ApplicationAdapter extends JSONAPIAdapter {
+}
