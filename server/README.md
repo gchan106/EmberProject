@@ -16,6 +16,6 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
-* node index.js
+* nodemon index.js
 
 visit server at [http://localhost:4500](http://localhost:4500).

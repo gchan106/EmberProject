@@ -18,6 +18,8 @@ You will need the following things properly installed on your computer.
 * `cd client`
 * `ember install ember-ajax`
 * `npm install`
+* https://www.npmjs.com/package/@ember/jquery to set up jquery in your local app
+* ember generate component-class NAME && ember generate component NAME when you want to generate a component/hbs pair
 
 ## Running / Development
 
@@ -56,6 +58,9 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+  * [Ajax Methods](https://www.w3schools.com/jquery/jquery_ref_ajax.asp)
+
+  
 
 
   to generate route ember generate route login

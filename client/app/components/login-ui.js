@@ -2,9 +2,13 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service} from "@ember/service";
+import $ from 'jquery';
+import ENV from 'client/config/environment';
+
 
 export default class LoginUIComponent extends Component {
     @service store;
+    @service router;
 
     constructor(owner, args){
         super(owner, args);
@@ -16,11 +20,13 @@ export default class LoginUIComponent extends Component {
     @action
     logIn(){
         if(this.username && this.password){
-            this.store.createRecord('member', {
-                username: this.username,
-                password: this.password
-              });
+            $.post(`${ENV.APP.API_ENDPOINT}/members/`).done(data => {
+                if(data.didLogOut){
+                    this.router.transitionTo('/')
+                }
+            })
         }
+        this.router.tran
     }
 
 }
