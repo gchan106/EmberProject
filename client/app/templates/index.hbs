@@ -1,9 +1,11 @@
 <div style="border: 1px solid purple;">
 
-WELCOME TO OUR PAGE
+<p>WELCOME TO OUR PAGE</p>
 
 {{#if this.model.name}}
+    LOG OUT BUTTON
     <p>Welcome {{@model.name}}</p>
+
     <ProfilePage
         @model={{model}}
     />

@@ -13,7 +13,6 @@ export default class LoginUIComponent extends Component {
     @tracked username;
     @tracked password;
 
-
     @action
     logIn(){
         if(this.username && this.password){
