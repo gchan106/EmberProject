@@ -8,13 +8,13 @@ app.use(cors());
 //Add if I missed yours
 var homeRouter = require('./routes/home');
 var signupRouter = require('./routes/signup');
-var loginRouter = require('./routes/login');
+var memberRouter = require('./routes/member');
 var betsRouter = require('./routes/bets');
 var profileRouter = require('./routes/profile');
 
 app.use('/', homeRouter);
 app.use('/signup', signupRouter);
-app.use('/login', loginRouter);
+app.use('/members', memberRouter);
 app.use('/bets', betsRouter);
 app.use('/profile', profileRouter);
 

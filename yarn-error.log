@@ -1,0 +1,43 @@
+Arguments: 
+  /Users/benchen/.nvm/versions/node/v10.22.0/bin/node /usr/local/bin/yarn add ember-cli
+
+PATH: 
+  /Users/benchen/.nvm/versions/node/v10.22.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  10.22.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com registry.yarnpkg.com:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:56:26)
+
+npm manifest: 
+  {
+    "name": "finalproject",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "client": "cd client && npm start",
+      "server": "cd server && npm start",
+      "start": "concurrently --kill-others \"npm run server\" \"npm run client\"",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "concurrently": "^5.3.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

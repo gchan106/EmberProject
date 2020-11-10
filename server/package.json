@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "fb-watchman": "^2.0.1"
   },
   "devDependencies": {
     "cors": "^2.8.5"
