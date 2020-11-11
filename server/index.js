@@ -4,6 +4,37 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 
+
+const mongo = require('mongodb').MongoClient
+const url = 'mongodb://localhost:27017';
+mongo.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }, (err, client) => {
+  if (err) {
+    return
+  }
+  client.db('bettDb').dropDatabase();
+  const db = client.db('bettDb');
+
+  simpleTestCollection = db.collection('test');
+  simpleTestCollection.insertOne({name: 'ben', age:56}, (err, result) => {
+
+})
+app.get('/testing', function(req, res) {
+    simpleTestCollection.find().toArray((err, items) => {
+        res.json(items);
+      })
+    
+});
+
+
+})
+
+
+
+
+
 //Routers for coinsiding requests
 //Add if I missed yours
 var homeRouter = require('./routes/home');

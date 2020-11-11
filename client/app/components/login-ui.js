@@ -21,7 +21,7 @@ export default class LoginUIComponent extends Component {
     logIn(){
         if(this.username && this.password){
             $.post(`${ENV.APP.API_ENDPOINT}/members/`).done(data => {
-                if(data.didLogOut){
+                if(data && data.didLogOut){
                     this.router.transitionTo('/')
                 }
             })
