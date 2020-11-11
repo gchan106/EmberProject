@@ -1,9 +1,9 @@
 import Component from '@glimmer/component';
 import {action} from '@ember/object'; 
-// import { inject as service }from '@ember/service';
+import { inject as service }from '@ember/service';
 
 export default class NavbarComponent extends Component {
-    // @service router;
+    @service router;
 
     // @action
     // redirectToSignInPage(){
@@ -18,8 +18,8 @@ export default class NavbarComponent extends Component {
 
     @action
     redirectToProfilePage(){
-        this.args.changePage('profile')
-        //this.router.transitionTo('profile');
+        // this.args.changePage('profile')
+        this.router.transitionTo('home');
     }
 
     @action

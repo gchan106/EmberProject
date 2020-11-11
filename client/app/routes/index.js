@@ -6,7 +6,6 @@ const FAKE_COOKIES = 123123123
 export default class IndexRoute extends Route {
     model() {
         return $.get(`${ENV.APP.API_ENDPOINT}/members?userCookie=${FAKE_COOKIES}`).done(data => {
-            debugger;
             return data
         })
     }
