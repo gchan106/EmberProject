@@ -21,8 +21,8 @@ export default class NavbarComponent extends Component {
 
     @action
     redirectToProfilePage(){
-        // this.args.changePage('profile')
-        this.router.transitionTo('home');
+        this.args.changePage('profile')
+        // this.router.transitionTo('home');
     }
 
     @action
@@ -40,10 +40,10 @@ export default class NavbarComponent extends Component {
 
     @action
     logOut(){
-            $.post(`${ENV.APP.API_ENDPOINT}/auth/logout`, { cookie: FAKE_COOKIES}).done(data => {
+            $.post(`${ENV.APP.API_ENDPOINT}/auth/logout`, { cookie: FAKE_COOKIES}).done(didLogOut => {
                 debugger
-                if(data && data.didLogOut){
-                    this.router.transitionTo('/')
+                if(didLogOut){
+                    this.router.transitionTo('login')
                 }
             })
         
