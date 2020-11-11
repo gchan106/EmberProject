@@ -1,0 +1,14 @@
+<div>
+    <Navbar
+        @changePage={{this.navigateTo}}
+    />
+    <button onclick={{this.logOut}}>LogOut</button>
+
+</div>
+
+
+{{#if this.isProfilePage}}
+    <ProfilePage
+        @model={{@model}}
+    />
+{{/if}}

@@ -1,0 +1,10 @@
+{
+    "search.exclude": {
+        "\"**/client/\"": true,
+        "**/client": true,
+        "**/client/dist/": true
+    },
+    "files.watcherExclude": {
+        "**/client/dist/**": true
+    }
+}
