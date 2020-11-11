@@ -27,24 +27,23 @@ mongo.connect(url, {
 
 app.get('/testing', function(req, res) {
     req.app.get('locals.client').db('bettDb').collection('test').find().toArray((err, items) => {
-        res.json(items);
-      })
-    
-    });
+      res.json(items);
+    })
+});
 
 
 //Routers for coinsiding requests
 //Add if I missed yours
 var homeRouter = require('./routes/home');
 var signupRouter = require('./routes/signup');
-var memberRouter = require('./routes/member');
+var friendsRouter = require('./routes/friends');
 var authRouter = require('./routes/auth');
 var betsRouter = require('./routes/bets');
 var profileRouter = require('./routes/profile');
 
 app.use('/', homeRouter);
 app.use('/signup', signupRouter);
-app.use('/members', memberRouter);
+app.use('/friends', friendsRouter);
 app.use('/auth', authRouter);
 app.use('/bets', betsRouter);
 app.use('/profile', profileRouter);

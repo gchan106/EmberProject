@@ -9,7 +9,7 @@ export default class IndexRoute extends Route {
     }
 
     afterModel(model, transition) {
-        if (!model) {
+        if (!model) { // if there model is empty, take us to log in route
           this.transitionTo('login');
         }
       }
