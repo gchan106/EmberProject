@@ -1,0 +1,22 @@
+{{!-- <h1>In Friends List Component</h1>
+<AddFriend /> --}}
+
+{{!-- Right now, this won't be shown anywhere until the hbs file is called in the profile component. --}}
+
+<div class="container">
+<h3>Friends List</h3>
+{{#if this.friendsListData}}
+    
+    {{#each this.friendsListData as |friendData|}}
+    
+    
+    <img class="profile-pic" src={{friendData.img}} alt={{friendData.firstName}} />
+    <p class="friend-name"> {{friendData.firstName}} {{friendData.lastName}}</p>
+
+    {{/each}}
+
+    {{else}}
+    <p>This profile does not have any friends yet, try adding some now!</p>
+
+{{/if}}
+</div>
