@@ -3,6 +3,7 @@ const app = express();
 
 const cors = require('cors');
 app.use(cors());
+const FAKE_COOKIES = 123123123;
 
 
 const mongo = require('mongodb').MongoClient
@@ -18,7 +19,7 @@ mongo.connect(url, {
   const db = client.db('bettDb');
 
   simpleTestCollection = db.collection('test');
-  simpleTestCollection.insertOne({name: 'ben', age:56}, (err, result) => {
+  simpleTestCollection.insertOne({name: 'ben', age:56, cookie: FAKE_COOKIES}, (err, result) => {
 
 })
 app.get('/testing', function(req, res) {
@@ -26,14 +27,8 @@ app.get('/testing', function(req, res) {
         res.json(items);
       })
     
-});
-
-
+    });
 })
-
-
-
-
 
 //Routers for coinsiding requests
 //Add if I missed yours

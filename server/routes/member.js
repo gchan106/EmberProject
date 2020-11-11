@@ -20,9 +20,9 @@ mongo.connect(url, {
 app.get('/', function(req, res) {
     const id = parseInt(req.query.userCookie);
 
-    members.find({cookie: id}).toArray((err, items) => {
+    members.findOne({cookie: id}, (err, items) => {
         console.log(items, '')
-        if(items.length){
+        if(items){
             res.json(items);
         } else {
             res.json(id);
