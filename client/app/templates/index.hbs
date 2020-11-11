@@ -2,17 +2,12 @@
 
 <p>WELCOME TO OUR PAGE</p>
 
-{{#if this.model.name}}
     LOG OUT BUTTON
 
     <p>Welcome {{@model.name}}</p>
     <MainApplication
         @model={{model}}
     />
-{{else}}
-    Please Log In:
-    <LoginUi/>
-{{/if}}
-{{outlet}}
+{{!-- {{outlet}} --}}
 
 </div>

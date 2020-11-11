@@ -9,4 +9,9 @@ export default class IndexRoute extends Route {
             return data
         })
     }
+    afterModel(model, transition) {
+        if (!model) {
+          this.transitionTo('login');
+        }
+      }
 }

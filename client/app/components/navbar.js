@@ -1,6 +1,9 @@
 import Component from '@glimmer/component';
 import {action} from '@ember/object'; 
 import { inject as service }from '@ember/service';
+import $ from 'jquery';
+import ENV from 'client/config/environment';
+const FAKE_COOKIES = 123123123
 
 export default class NavbarComponent extends Component {
     @service router;
@@ -33,5 +36,16 @@ export default class NavbarComponent extends Component {
     redirectToCreateBetPage(){
         this.args.changePage('createbet')
         //this.router.transitionTo('createbet');
-    }    
+    }  
+
+    @action
+    logOut(){
+            $.post(`${ENV.APP.API_ENDPOINT}/auth/logout`, { cookie: FAKE_COOKIES}).done(data => {
+                debugger
+                if(data && data.didLogOut){
+                    this.router.transitionTo('/')
+                }
+            })
+        
+    }
 }

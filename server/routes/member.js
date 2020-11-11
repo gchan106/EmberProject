@@ -30,9 +30,6 @@ app.get('/', function(req, res) {
         }
       })
 });
-app.post('/', function(req, res) {
-    res.json({didLogOut: true})
-    // get username, password and add to DB
-})
+
 
 module.exports = app;
