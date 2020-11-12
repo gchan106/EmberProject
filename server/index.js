@@ -33,9 +33,9 @@ if (err) {
   userBetsCollection = db4.collection('userBets');
   simpleTestCollection.insertOne({name: 'ben', age:56}, (err, result) => {
 })
-userAccountsCollection.insertOne({UserName: 'Daniel', password: '12345',userBalance:1000 }, (err, result) => {
-})
-friendsCollection.insertOne({UserName: 'Daniel', friendsWith:'Jasper' }, (err, result) => {
+userAccountsCollection.insertOne({username: 'Daniel', password: '12345',userBalance:100,isLoggedIn:'true',cookie: TEMPORARY_DEMO_COOKIE_1 })
+userAccountsCollection.insertOne({username: 'Jasper', password: '222',userBalance:100,isLoggedIn:'true',cookie: TEMPORARY_DEMO_COOKIE_2 })
+friendsCollection.insertOne({username: 'Daniel', friendsWith:'Jasper' }, (err, result) => {
 })
 activeBetsCollection.insertOne({BetCreator: 'Daniel', BetDescription:'Buffalo Bills will win the superbowl', BetAmount:20, BetPayout:100, BetStatus:'TBD', userAccountsID:'' }, (err, result) => {
 })
@@ -47,23 +47,23 @@ app.get('/testing', function(req, res) {
       })
     });
     app.get('/user', function(req, res) {
-      userAccountsCollection.find().toArray((err, items) => {
-          res.json(items);
-        })
+      req.app.get('locals.client').db('bettDb').collection('userAccounts').find().toArray((err, items) => {
+        res.json(items);
+      })
       });
       app.get('/friends', function(req, res) {
-        friendsCollection.find().toArray((err, items) => {
-            res.json(items);
+        req.app.get('locals.client').db('bettDb').collection('userFriends').find().toArray((err, items) => {
+          res.json(items);
           })
           });
           app.get('/activeBets', function(req, res) {
-            activeBetsCollection.find().toArray((err, items) => {
-                res.json(items);
-              })
+            req.app.get('locals.client').db('bettDb').collection('activeBets').find().toArray((err, items) => {
+              res.json(items);
+            })
               });
               app.get('/userBets', function(req, res) {
-                userBetsCollection.find().toArray((err, items) => {
-                    res.json(items);
+                req.app.get('locals.client').db('bettDb').collection('userBets').find().toArray((err, items) => {
+                  res.json(items);
                   })
                   });
 })
