@@ -3,8 +3,8 @@ var app = express();
 
 
 app.post('/login', function(req, res) {
-    const username = req.param('username');
-    const password = req.param('password');
+    const username = req.param('username').toLowerCase();
+    const password = req.param('password').toLowerCase();
     req.app.get('locals.client').db('bettDb').collection('userAccounts').findOne({
         username,password
     }, (err, items) => {

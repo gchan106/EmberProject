@@ -1,0 +1,162 @@
+
+<button class = "bet_button_join" onclick={{action this.changeUser}}>  User</button>
+<button class = "bet_button_join" onclick={{action this.changeAdmin}}>  Admin</button>
+<button class = "bet_button_join" onclick={{action this.changeAdminResolvedBet}}>  Resolved</button>
+<button class = "bet_button_join" onclick={{action this.changeAdminUnResolvedBet}}> Admin Unresolved</button>
+<button class = "bet_button_join" onclick={{action this.changeUserUnResolvedBet}}> User Unresolved</button>
+<button class = "bet_button_join" onclick={{action this.loadSampleData}}> Sample Data</button>
+<button class = "bet_button_join" onclick={{action this.newData}}> Clear Data</button>
+<br>
+
+<body class= "main_bet_page">
+
+{{#if displayCreateBet}}
+    <h1 class = "create_bet" > Create a Bet</h1>
+
+        <table class ="bet_input_field_table">
+            <tr>
+            <td>
+                <label for="name"><b>Bet Title</b></label>
+                <input 
+                    id = "bet_title"
+                    type = "string"
+                    value = {{currentBetTitleValue}}
+                    oninput = {{action inputBetTitleValue}}
+                >
+            </td>
+            </tr>
+
+            <tr>
+            <td>
+                <label for="name"><b>Amount</b></label>
+                <input 
+                    id = "bet_amount"
+                    type = "number"
+                    value = {{currentBetAmountValue}}
+                    oninput = {{action inputBetAmountValue}}
+                >
+            </td>
+            </tr>
+
+            <tr>
+            <td><br>
+                <label><b>Description of Bet</b></label> <br><br>
+                <input 
+                    class = "bet_detail_input" 
+                    id = "bet_description"
+                    type = "string"
+                    value = {{currentBetDescriptionValue}}
+                    oninput = {{action inputBetDescriptionValue}}
+                >
+                    
+            </td>
+            </tr>
+        </table> <br>
+
+            <input 
+                type="radio" 
+                name="betside"   
+                onclick={{action (mut betAgainst) true}}>
+            <label>Bet For</label>
+            <input 
+                type="radio" 
+                name="betside"  
+                onclick={{action (mut betAgainst) false}}>
+            <label>Bet Against</label> <br>
+
+    <button 
+        class = "create_bet_button"
+        onclick = {{
+            action
+            createBet
+                currentBetTitleValue
+                currentBetAmountValue 
+                currentBetDescriptionValue
+                betSide
+
+            }}>
+        Create Bet</button>
+
+{{else}}
+    <h1 class= "bet_title">{{individualBet.betData.betName}}</h1>
+
+{{#if betDataEntered}}
+    <h2 class = "display_individual_bet" > My Bet</h2>
+    {{else}}
+        <h2 class = "display_individual_bet" > {{individualBet.betData.betAdmin}}'s Bet</h2>
+
+{{/if}}
+
+    <div class = "bet_info">
+        <h3>Current bet Amount : $ {{individualBet.betData.betAmount}}.00 </h3>
+        <h4> Description: <br><br> <p>{{individualBet.betData.betDetail}}</p></h4>
+    </div>
+
+<table class = "bet_participant_table">
+    
+
+
+    {{#if betResolution}}
+                <tr>
+                 <th>Whose in on this Bet</th>
+                 <th>Date Joined</th>
+                 <th>Bet Standing</th>
+                </tr>
+        {{#each nameList key = "index" as |nameList index| }}
+                <tr>
+                <td>{{nameList.userData.userName}}</td>
+                <td>{{nameList.userData.userTime}}</td>
+                <td>{{#if nameList.userData.betSide }} Betting For
+                    {{else}} Betting Against {{/if}}
+                </td>
+                </tr>      
+        {{/each}}
+    
+    {{else}}
+                <tr>
+                <th>Whose in on this Bet</th>
+                <th>Outcome</th>
+                </tr>
+            {{#each nameList key = "index" as |nameList index| }}
+                <tr>
+                <td>{{nameList.userData.userName}}</td>
+                <td>
+                    {{#if nameList.userData.betSide }} Winner
+                    {{else}} Loser {{/if}}
+                </td>
+                </tr>      
+            {{/each}}
+    {{/if}}
+
+
+</table>
+<br><br><br><br>
+        
+    {{#if betDataEntered}}
+                {{#if betResolution}}
+                <button class = "button_resolve" onclick={{action this.changeAdminResolvedBet}}> Bet Resolve</button>
+                <button class = "button_resolve"> Bet Unresolved</button>
+                {{else}}
+                <h3 class = "bet_resolved_text"> Bet Resolved</h3>
+
+                {{/if}}
+            {{else}}
+            <input 
+                type="radio"
+                name="betside"  
+                onclick={{action (mut betAgainst) true}}>
+            <label>Bet For</label>
+            <input 
+                type="radio" 
+                name="betside"  
+                onclick={{action (mut betAgainst) false}}>
+            <label>Bet Against</label> <br>
+            
+            <button 
+                class = "button_resolve"  
+                onclick = {{ action joinBet}}>
+                Join Bet</button>
+
+    {{/if}}
+{{/if}}
+</body>

@@ -11,6 +11,14 @@ export default class MainApplicationComponent extends Component {
         return this.activePage === 'profile';
     }
 
+    get isActiveBetPage(){
+        return this.activePage === 'activebet';
+    }
+
+    get isCreateBetPage(){
+        return this.activePage === 'createbet';
+    }
+
     @action
     navigateTo(page){
         this.activePage=page;

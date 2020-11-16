@@ -1,98 +1,236 @@
 /* Add a black background color to the top navigation */
-body{
-    margin: 0;
+
+body {
+	margin: 0;
 }
 
 nav.topnav {
-    background-color: #333;
-    overflow: hidden;
-    width: 100%;
-    height: 50px;
-    vertical-align:middle;
-  }
+	background-color: #333;
+	overflow: hidden;
+	width: 100%;
+	height: 50px;
+	vertical-align: middle;
+}
 
-   /* Style the links inside the navigation bar */
+
+/* Style the links inside the navigation bar */
+
 .topnav button {
-    padding: 0;
-    border: none;
-    vertical-align:middle;
-    background: none;
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  } 
-  
-.topnav .btnHeader{
-    font-size: 1.5em;
+	padding: 0;
+	border: none;
+	vertical-align: middle;
+	background: none;
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
 }
 
-.topnav .btnSignUp{
-    float: right;
-    background-color:#333;
-    color: #f2f2f2;
-    padding: 8px 20px;
-    text-align: center;
-    text-decoration: none;
-    /* display: inline-block; */
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 16px;
-    border: 2px solid #7aebcb;
+.topnav .btnHeader {
+	font-size: 1.5em;
 }
 
-.topnav .btnSignOut{
-    float: right;
-    background-color:#333;
-    color: #f2f2f2;
-    padding: 8px 20px;
-    text-align: center;
-    text-decoration: none;
-    /* display: inline-block; */
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 16px;
-    border: 2px solid #7aebcb;
+.topnav .btnSignUp {
+	float: right;
+	background-color: #333;
+	color: #f2f2f2;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	/* display: inline-block; */
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 16px;
+	border: 2px solid #7aebcb;
 }
- 
-  /* Change the color of links on hover */
-  .topnav button:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  /* Add a color to the active/current link */
-  /* .topnav button.active {
+
+.topnav .btnSignOut {
+	float: right;
+	background-color: #333;
+	color: #f2f2f2;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	/* display: inline-block; */
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 16px;
+	border: 2px solid #7aebcb;
+}
+
+
+/* Change the color of links on hover */
+
+.topnav button:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+
+/* Add a color to the active/current link */
+
+
+/* .topnav button.active {
     background-color: #4CAF50;
     color: white;
   } */
+
 .profile-pic {
-    /* height */
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    
+	/* height */
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
 }
 
 .addFriendButton {
+	background-color: #4CAF50;
+	border-radius: 20px;
+	border: none;
+	color: white;
+	padding: 15px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.friend-name {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.main_bet_page {
+	position: relative;
+	text-align: center;
+	align-content: center;
+	font-family: Baskerville;
+	margin: auto;
+	width: 60%;
+	background-color: rgb(84, 84, 84);
+	left: 30px;
+	color: #ff5900;
+}
+
+.bet_title {
+	width: 100%;
+	margin: auto;
+	width: auto;
+	padding: 20px;
+	background-color: rgb(68, 67, 67);
+}
+
+.bet_participant_table {
+	max-width: 600px;
+	width: 100%;
+	margin: auto;
+	width: auto;
+	padding: 40px;
+	background-color: rgb(225, 218, 218);
+	border-collapse: collapse;
+}
+
+.bet_input_field_table {
+	position: relative;
+	max-width: 400px;
+	width: 100%;
+	margin: auto;
+	width: auto;
+	padding: 40px;
+	background-color: rgb(225, 218, 218);
+}
+
+.bet_participant_table td {
+	border: 1px solid #ddd;
+	padding: 10px;
+}
+
+.bet_participant_table tr {
+	border: 1px solid #ddd;
+}
+
+.bet_participant_table th {
+	border: 1px solid #ddd;
+	padding: 10px;
+	width: 200px;
+}
+
+.bet_participant_table tr:nth-child(0) {
+	background-color: #c0bfbf;
+}
+
+.bet_participant_table tr:nth-child(odd) {
+	background-color: #c0bfbf;
+}
+
+.bet_participant_table tr:hover {
+	background-color: rgb(255, 254, 254);
+}
+
+.bet_resolved_text {
+	float: right;
+	border: 1px solid black;
+	padding: 10px;
+	background-color: rgb(84, 84, 84);
+	color: #ff5900;
+}
+
+.button_resolve {
+	float: right;
+	border: 1px solid black;
+	padding: 20px;
+	background-color: rgb(84, 84, 84);
+	color: #ff5900;
+}
+
+.button_resolve:hover {
+	background-color: rgb(196, 189, 189);
+}
+
+.bet_button_join {
+	float: left;
+}
+
+.create_bet {
+	padding-right: 30px;
+	padding-left: 30px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	background-color: rgb(68, 67, 67);
+}
+
+.bet_detail_input {
+	height: 100px;
+	width: 300px;
+}
+
+.bet_info {
+	max-width: 421px;
+	width: 100%;
+	margin: auto;
+	width: auto;
+	padding: 40px;
+	background-color: rgb(225, 218, 218);
+	border-collapse: collapse;
+	padding: 10px;
+	margin: auto;
+}
+
+.create_bet_button {
+	float: right;
+	background-color: rgb(68, 67, 67);
+	padding: 20px;
+	color: #ff5900;
+}
+
+
+/* Add a color to the active/current link */
+
+
+/* .topnav button.active {
     background-color: #4CAF50;
-    border-radius: 20px;
-    border: none;
     color: white;
-    padding: 15px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-
-}
-
-.friend-name{
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-}
-
+  } */

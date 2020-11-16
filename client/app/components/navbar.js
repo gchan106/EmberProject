@@ -6,7 +6,7 @@ import ENV from 'client/config/environment';
 const FAKE_COOKIES = 123123123
 
 export default class NavbarComponent extends Component {
-    @service router;
+    // @service router;
 
     // @action
     // redirectToSignInPage(){
@@ -27,7 +27,7 @@ export default class NavbarComponent extends Component {
 
     @action
     redirectToActiveBetsPage(){
-        this.args.changePage('activebets')
+        this.args.changePage('activebet')
         //Active Bets Page is the Home Page
         //this.router.transitionTo('home');
     }
@@ -41,7 +41,6 @@ export default class NavbarComponent extends Component {
     @action
     logOut(){
             $.post(`${ENV.APP.API_ENDPOINT}/auth/logout`, { cookie: FAKE_COOKIES}).done(didLogOut => {
-                debugger
                 if(didLogOut){
                     this.router.transitionTo('login')
                 }

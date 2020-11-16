@@ -9,7 +9,6 @@ export default class LoginRoute extends Route {
     }
 
     afterModel(model, transition) {
-        debugger;
         if (model && model.isLoggedin) { // if there model is empty, take us to log in route
           this.transitionTo('/');
         }
