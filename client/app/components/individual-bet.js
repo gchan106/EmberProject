@@ -80,6 +80,7 @@ loadSampleData(){
     this.nameList = this.individualBet.betData.betParticipants;
     console.log(this.nameList)
     console.log(this.individualBet.betData.betParticipants.length)
+    this.createData();
 }
 
 createBet(title, amount, detail, side){
@@ -116,6 +117,7 @@ joinBet(user, name){
         }
     })
     console.log(this.individualBet.betData.betParticipants)
+    updateData();
 }
 resolveBet(){
     this.individualBet.betData.betResolution = true
