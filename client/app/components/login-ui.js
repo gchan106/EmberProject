@@ -20,10 +20,10 @@ export default class LoginUIComponent extends Component {
     @action
     logIn(){
         if(this.username && this.password){
-
             $.post(`${ENV.APP.API_ENDPOINT}/auth/login`, ({username: this.username,password: this.password}), (result)=>{
                 if(result && result.isLoggedIn){
-                    this.router.transitionTo('/')
+                    localStorage.setItem('cookie',result.cookie);
+                    this.router.transitionTo('/');
                 }
               });
 
