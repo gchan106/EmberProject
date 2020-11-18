@@ -11,13 +11,22 @@ app.post('/login', function(req, res) {
         console.log(err, items, "debug for class")
 
         if(items){
-            res.json(items);
+            req.app.get('locals.client').db('bettDb').collection('userAccounts')
+            .updateOne(  { username:username,password:password } , { $set: { isLoggedIn : "true"  } }, (err, item) => {
+                // console.log(items, 'response for logout')
+                if(item){
+                    res.json({...items,isLoggedIn:true});
+                } else {
+                    res.json(null);
+                }
+            })
         } else {
             res.json(null);
 
         }
       })
 });
+
 app.get('/isloggedin', function(req, res) {
     const cookie = parseInt(req.query.cookie);
     console.log('checking if is logged in', cookie);
@@ -34,9 +43,10 @@ app.get('/isloggedin', function(req, res) {
       })
 });
 app.post('/logout', function(req, res) {
-    const cookie = req.param('cookie');
-    console.log(cookie, 'the cookie')
-    req.app.get('locals.client').db('bettDb').collection('userAccounts').update(  { cookie } , { $set: { isLoggedIn : false  } }, (err, items) => {
+    const cookie = parseInt(req.param('cookie'));
+    console.log('the cookie');
+    req.app.get('locals.client').db('bettDb').collection('userAccounts')
+    .updateOne(  { cookie:cookie } , { $set: { isLoggedIn : false  } }, (err, items) => {
         // console.log(items, 'response for logout')
         if(items){
             res.json(true);
@@ -44,7 +54,8 @@ app.post('/logout', function(req, res) {
             res.json(null);
 
         }
-      })
+    });
 });
+
 
 module.exports = app;

@@ -2,11 +2,13 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import $ from 'jquery';
+import ENV from 'client/config/environment';
 
 export default class MainApplicationComponent extends Component {
     @tracked  activePage = 'profile';
     @service router;
-
+    
     get isProfilePage(){
         return this.activePage === 'profile';
     }
@@ -27,6 +29,14 @@ export default class MainApplicationComponent extends Component {
     @action 
     logOut(){
         //log out request
-        this.router.transitionTo('login');
+        // const cookie = parseInt(this.router._router.currentRoute.attributes.cookie);
+        const cookie = localStorage.getItem('cookie');
+        
+        $.post(`${ENV.APP.API_ENDPOINT}/auth/logout`, ({cookie:cookie}), (result)=>{
+            if(result){
+                this.router.transitionTo('login');
+                console.log(result);
+            }
+        });  
     }
 }

@@ -1,11 +1,16 @@
 import Route from '@ember/routing/route';
 import $ from 'jquery';
 import ENV from 'client/config/environment';
+import { inject as service } from '@ember/service';
 
-const FAKE_COOKIES = 123123123
+const FAKE_COOKIE = 123123123;
 export default class IndexRoute extends Route {
-    model() {
-        return $.get(`${ENV.APP.API_ENDPOINT}/auth/isloggedin?cookie=${FAKE_COOKIES}`);
+    @service store;
+    
+    model(params) {
+      // const REAL_COOKIE = parseInt(params.cookie);
+      const cookie =localStorage.getItem('cookie');
+        return $.get(`${ENV.APP.API_ENDPOINT}/auth/isloggedin?cookie=${cookie}`);
     }
 
     afterModel(model, transition) {
