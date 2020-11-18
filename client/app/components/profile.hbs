@@ -1,0 +1,38 @@
+<h1>{{@model.username}}'s Profile</h1> <img id='preview-image' src='' alt='pfp'>
+
+
+<p>Change Selfie:</p> 
+
+<input
+  multiple="true"
+  onchange={{action uploadFile}}
+  accept="image/png,image/jpeg,application/pdf"
+  type="file"
+  />
+
+
+{{!-- <div>
+  <p id='bio'>{{tempUser.bio}} </p>
+</div> --}}
+
+<br>
+
+<div>
+  <h2>Current Bets {{@model.username}} Is a Part Of:</h2>
+
+  <ul>
+    {{#each this.betsCreated key="index" as |betsCreated|}}
+        <li class="no-dots"> 
+            <LinkTo class="list-mybets-title" @route="bets" @query={{hash id=betsCreated._id}}>{{betsCreated.BetDescription}}</LinkTo>
+        </li>
+    {{/each}}
+    </ul>
+
+
+
+
+</div>
+
+  
+
+  <br>
