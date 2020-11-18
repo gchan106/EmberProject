@@ -33,6 +33,7 @@ mongo.connect(url, {
     activeBetsCollection = db3.collection('activeBets');
     const db4 = client.db('bettDb');
     userBetsCollection = db4.collection('userBets');
+
     simpleTestCollection.insertOne({
         name: 'ben',
         age: 56
@@ -41,6 +42,8 @@ mongo.connect(url, {
         username: 'daniel',
         password: '12345',
         userBalance: 100,
+        //userMadeBets []
+        //userBetsAsParticipant []
         isLoggedIn: 'true',
         cookie: TEMPORARY_DEMO_COOKIE_1
     })
@@ -76,6 +79,9 @@ mongo.connect(url, {
             res.json(items);
         })
     });
+    app.get('/test', function(req, res) {
+ res.json(req.query.username)
+});
     app.get('/user', function(req, res) {
         req.app.get('locals.client').db('bettDb').collection('userAccounts').find().toArray((err, items) => {
             res.json(items);

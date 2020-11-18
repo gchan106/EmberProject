@@ -78,21 +78,21 @@
         Create Bet</button>
 
 {{else}}
-    <h1 class= "bet_title">{{individualBet.betData.betName}}</h1>
+        <h1 class= "bet_title">{{individualBet.betData.betName}}</h1>
 
-{{#if betDataEntered}}
-    <h2 class = "display_individual_bet" > My Bet</h2>
-    {{else}}
-        <h2 class = "display_individual_bet" > {{individualBet.betData.betAdmin}}'s Bet</h2>
+    {{#if betDataEntered}}
+        <h2 class = "display_individual_bet" > My Bet</h2>
+        {{else}}
+            <h2 class = "display_individual_bet" > {{individualBet.betData.betAdmin}}'s Bet</h2>
 
-{{/if}}
+    {{/if}}
 
-    <div class = "bet_info">
-        <h3>Current bet Amount : $ {{individualBet.betData.betAmount}}.00 </h3>
-        <h4> Description: <br><br> <p>{{individualBet.betData.betDetail}}</p></h4>
-    </div>
+        <div class = "bet_info">
+            <h3>Current bet Amount : $ {{individualBet.betData.betAmount}}.00 </h3>
+            <h4> Description: <br><br> <p>{{individualBet.betData.betDetail}}</p></h4>
+        </div>
 
-<table class = "bet_participant_table">
+        <table class = "bet_participant_table">
     
 
 
