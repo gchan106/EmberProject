@@ -5,7 +5,7 @@ var app = express();
 app.get('/friendlist', function(req, res) {
     // given the username of the current logged in member, get his friend list
     //req.query.username
-    req.app.get('locals.client').db('bettDb').collection('userFriends').find().toArray((err, items) => {
+    req.app.get('locals.client').db('bettDb').collection('userFriends').find({username: req.query.username}).toArray((err, items) => {
       res.json(items);
       //console.log(req.query.username)
     })

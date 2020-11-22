@@ -19,7 +19,7 @@ export default class FriendsListComponent extends Component {
         // let fakeFriendsData = [{firstName: "Jasper", lastName: "Caballero", img: "http://placekitten.com/200/300"} , {firstName: "Daniel", lastName: "Dolan", img:"http://placekitten.com/300/300"}, {firstName: "Victoria", lastName: "Fischer", img: "http://placekitten.com/201/300"}]
         // this.friendsListData = fakeFriendsData
 
-        console.log(this.friendsListData)
+       
     }
 
 
