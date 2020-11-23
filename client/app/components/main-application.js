@@ -20,6 +20,10 @@ export default class MainApplicationComponent extends Component {
     get isCreateBetPage(){
         return this.activePage === 'createbet';
     }
+    get isSignUpPage(){
+        return this.activePage === 'signup';
+    }
+
 
     @action
     navigateTo(page){
