@@ -8,23 +8,27 @@ export default class BetsUserCreatedComponent extends Component {
     constructor(){
         super(...arguments);
         this.betsCreated = [];
-        this.username = this.args.username;
+        this.cookie = this.args.model.cookie;
         this.findBetsCreated();
     }
 
     @tracked betsCreated = [];
-    @tracked username = null;
+    @tracked cookie = null;
     
     findBetsCreated(){
-        $.get(`${ENV.APP.API_ENDPOINT}/profile/getUsersBets?username=`+this.username).done(betsUserCreatedList => {
+        $.get(`${ENV.APP.API_ENDPOINT}/profile/getUsersBets?userCookie=`+this.cookie).done(betsUserCreatedList => {
             this.betsCreated = betsUserCreatedList;
-        })
+        });
     }
+
+    // get getTime(betInstance){
+    //     return betInstance.betData.betParticipants[0].userData.userData;
+    // }
 
     @action
     redirectToIndiv(id){
         this.args.betInfoHandler(id);
-        this.args.changePage('createbet');
+        this.args.changePage('createbet', 'false');
     }
 
 

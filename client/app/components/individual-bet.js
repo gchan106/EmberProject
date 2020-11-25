@@ -29,6 +29,14 @@ export default class IndividualBetComponent extends Component {
 constructor(){
     super(...arguments)
     this.currentBetID = '' ; 
+
+
+
+    this.userIdNum = this.args.betId;
+    this.setDisplay();
+
+
+
     // when you join a bet from a list of existing bets in the home, 
     // bet that gets loaded and updated is the existing betID that needs to be pulled from the database
     this.userIdNum = localStorage.getItem('cookie');
@@ -38,6 +46,12 @@ constructor(){
     //this.getTimeAndDate();
     console.log(this.userIdNum);
 
+}
+
+
+setDisplay(){
+    if(this.userIdNum)
+        this.displayCreateBet = false;
 }
 
 getTimeAndDate(){

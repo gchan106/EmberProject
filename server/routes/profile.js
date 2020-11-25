@@ -1,3 +1,4 @@
+const { json } = require('express');
 var express = require('express');
 var app = express();
 
@@ -39,6 +40,33 @@ mongo.connect(url, {
 
         userBetsCollection.find(query).toArray((err, items) => {
             res.json(items);
+    });
+
+    indivBetCollection = db.collection('indivBet')
+    app.get('/getUsersBets', function(req, res) {
+        //sorts userBets by username to get current user's created bets
+        let userCookie = req.query.userCookie;
+        let tempArray = [];
+        let query = {"betData.betParticipants.userID": userCookie};
+        console.log(userCookie);
+        indivBetCollection.find(query).toArray((err, items) => {
+            // tempArray = items;
+            for(let i = 0; i < items.length; i++){
+
+                if(items[i].betData.betParticipants[0].userID == userCookie){
+                    tempArray.push(items[i])
+                }
+            }
+            res.json(tempArray);
+        });
+
+        // for(let i = 0; i < tempArray.length; i++){
+        //     if(tempArray[i].betData.betParticipants[0].userID != userCookie){
+        //         delete tempArray[i];
+        //     }
+        // }
+
+        //res.json(tempArray);
     });
 });
 
