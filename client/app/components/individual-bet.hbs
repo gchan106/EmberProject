@@ -126,10 +126,12 @@
                 </td>
                 </tr>      
             {{/each}}
+            
     {{/if}}
 
 
 </table>
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Bet Against me on BetYa!" data-url="http://localhost:4200/" data-hashtags="BetYa" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <br><br><br><br>
         
     {{#if betDataEntered}}
@@ -138,7 +140,6 @@
                 <button class = "button_resolve"> Bet Unresolved</button>
                 {{else}}
                 <h3 class = "bet_resolved_text"> Bet Resolved</h3>
-
                 {{/if}}
             {{else}}
             <input 
@@ -155,8 +156,7 @@
             <button 
                 class = "button_resolve"  
                 onclick = {{ action joinBet}}>
-                Join Bet</button>
-
+                Join Bet</button>        
     {{/if}}
 {{/if}}
 </body>
