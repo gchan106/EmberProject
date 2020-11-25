@@ -58,36 +58,7 @@ app.get('/updatedata', function(req, res) {
                     else 
                         {res.json('data not updated');}
                 })
-        
-        
-  
-
    
-});
-
-app.post('/login', function(req, res) {
-    const username = req.param('username').toLowerCase();
-    const password = req.param('password').toLowerCase();
-    req.app.get('locals.client').db('bettDb').collection('userAccounts').findOne({
-        username,password
-    }, (err, items) => {
-        console.log(err, items, "debug for class")
-
-        if(items){
-            req.app.get('locals.client').db('bettDb').collection('userAccounts')
-            .updateOne(  { username:username,password:password } , { $set: { isLoggedIn : "true"  } }, (err, item) => {
-                // console.log(items, 'response for logout')
-                if(item){
-                    res.json({...items,isLoggedIn:true});
-                } else {
-                    res.json(null);
-                }
-            })
-        } else {
-            res.json(null);
-
-        }
-      })
 });
 
 
