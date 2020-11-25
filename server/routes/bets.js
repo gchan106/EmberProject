@@ -60,6 +60,7 @@ app.get('/updatedata', function(req, res) {
                 })
    
 });
+<<<<<<< HEAD
 
 
 <<<<<<< HEAD
@@ -69,6 +70,14 @@ module.exports = app;
 module.exports = app;
 =======
 
+=======
+>>>>>>> 8ec863e2... Update
 module.exports = app;
+<<<<<<< HEAD
 >>>>>>> 2fd9c9f4... Update bets.js
+<<<<<<< HEAD
 >>>>>>> d94407c0... Update bets.js
+=======
+=======
+>>>>>>> 292ea877... Update bets.js
+>>>>>>> 8ec863e2... Update
