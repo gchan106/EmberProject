@@ -8,15 +8,34 @@
 
 
 {{#if this.isProfilePage}}
-    <ProfilePage
+    <div class = 'left'>
+    <ProfilePage 
         @model={{@model}}
+        @changePage={{this.navigateTo}}
+        @betInfoHandler={{this.betInfoHandler}}
     />
+    </div>
+
+    <div class = 'right'>
+    <FriendsList/>
+    <AddFriend/>
+    </div>
+    
 {{/if}}
 
 {{#if this.isCreateBetPage}}
-    <IndividualBet
+    <div class = 'left'>
+    <IndividualBet 
         @model={{@model}}
+        @betId={{this.betID}}
     />
+    </div>
+
+    <div class = 'right'>
+    <FriendsList/>
+    <AddFriend/>
+    </div>
+    
 {{/if}}
 
 {{#if this.isSignUpPage}}

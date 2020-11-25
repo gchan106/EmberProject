@@ -7,6 +7,7 @@ import ENV from 'client/config/environment';
 
 export default class MainApplicationComponent extends Component {
     @tracked  activePage = 'profile';
+    @tracked betID = null;
     @service router;
     
     get isProfilePage(){
@@ -28,6 +29,11 @@ export default class MainApplicationComponent extends Component {
     @action
     navigateTo(page){
         this.activePage=page;
+    }
+
+    @action
+    betInfoHandler(id){
+        this.betID = id;
     }
 
     @action 

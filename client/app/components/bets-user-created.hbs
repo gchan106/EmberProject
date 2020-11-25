@@ -1,0 +1,19 @@
+<div class="">
+    <h3 class="mybets-heading">Active Bets {{@username}} Has Created</h3>
+    <ul data-test-bets-user-created>
+    {{#if this.notEmptyArray}}
+    {{#each this.betsCreated key="index" as |betsCreated|}}
+        <li class="no-dots"> 
+            {{!-- There is no time created for a bet in the userBets table --}}
+            <p class="time-created">@ 12:12</p> 
+            {{!-- <LinkTo class="list-mybets-title" @route="indivbet" @query={{hash id=betsCreated._id}}>{{betsCreated.BetDescription}}</LinkTo> --}}
+            <a href="#" class="list-mybets-title" onclick={{fn redirectToIndiv betsCreated._id}}>{{betsCreated.BetDescription}}</a>
+        </li>
+    {{/each}}
+    {{else}}
+        <p class="no-created-bets">You have not created any bets</p>
+    {{/if}}
+    </ul>
+</div>
+
+{{yield}}
