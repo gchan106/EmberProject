@@ -48,9 +48,7 @@ mongo.connect(url, {
         let userCookie = req.query.userCookie;
         let tempArray = [];
         let query = {"betData.betParticipants.userID": userCookie};
-        console.log(userCookie);
         indivBetCollection.find(query).toArray((err, items) => {
-            // tempArray = items;
             for(let i = 0; i < items.length; i++){
 
                 if(items[i].betData.betParticipants[0].userID == userCookie){
@@ -59,14 +57,6 @@ mongo.connect(url, {
             }
             res.json(tempArray);
         });
-
-        // for(let i = 0; i < tempArray.length; i++){
-        //     if(tempArray[i].betData.betParticipants[0].userID != userCookie){
-        //         delete tempArray[i];
-        //     }
-        // }
-
-        //res.json(tempArray);
     });
 });
 

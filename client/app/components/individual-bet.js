@@ -10,7 +10,7 @@ export default class IndividualBetComponent extends Component {
 
 @tracked betResolution = true;
 @tracked betDataEntered = true;
-@tracked displayCreateBet = true;
+@tracked displayCreateBet;
 @tracked nameList = [];
 @tracked individualBet = {}
 @tracked betAgainst = null;
@@ -30,13 +30,6 @@ constructor(){
     super(...arguments)
     this.currentBetID = '' ; 
 
-
-
-    this.userIdNum = this.args.betId;
-    this.setDisplay();
-
-
-
     // when you join a bet from a list of existing bets in the home, 
     // bet that gets loaded and updated is the existing betID that needs to be pulled from the database
     this.userIdNum = localStorage.getItem('cookie');
@@ -48,10 +41,9 @@ constructor(){
 
 }
 
-
-setDisplay(){
-    if(this.userIdNum)
-        this.displayCreateBet = false;
+get getDisplay(){
+    this.displayCreateBet = this.args.displayCreateBet;
+    return this.displayCreateBet;
 }
 
 getTimeAndDate(){
@@ -169,6 +161,7 @@ inputBetDescriptionValue(input){
 }
 
 requestData(){
+    console.log(this.args.betId)
     $.get(`${ENV.APP.API_ENDPOINT}/bets/requestdata`, {betID: this.userIdNum}).done( bets=> { 
     // this pulls all bets that match the ID
       this.retrievedData = bets;
