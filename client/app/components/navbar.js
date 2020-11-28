@@ -34,6 +34,7 @@ export default class NavbarComponent extends Component {
 
     @action
     redirectToCreateBetPage(){
+        this.args.betInfoHandler(null)
         this.args.changePage('createbet')
         //this.router.transitionTo('createbet');
     }  

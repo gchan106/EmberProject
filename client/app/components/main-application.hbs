@@ -1,6 +1,7 @@
 <div>
     <Navbar
         @changePage={{this.navigateTo}}
+        @betInfoHandler={{this.betInfoHandler}}
     />
     <button onclick={{this.logOut}}>LogOut</button>
 
@@ -8,13 +9,39 @@
 
 
 {{#if this.isProfilePage}}
-    <ProfilePage
+    <div class = 'left'>
+    <ProfilePage 
         @model={{@model}}
+        @changePage={{this.navigateTo}}
+        @betInfoHandler={{this.betInfoHandler}}
     />
+    </div>
+
+    <div class = 'right'>
+    <FriendsList/>
+    <AddFriend/>
+    </div>
+    
 {{/if}}
 
 {{#if this.isCreateBetPage}}
-    <IndividualBet
+    <div class = 'left'>
+    <IndividualBet 
+        @model={{@model}}
+        @betId={{this.betID}}
+        @displayCreateBet={{this.displayCreateBet}}
+    />
+    </div>
+
+    <div class = 'right'>
+    <FriendsList/>
+    <AddFriend/>
+    </div>
+    
+{{/if}}
+
+{{#if this.isSignUpPage}}
+    <SignUp
         @model={{@model}}
     />
 {{/if}}
