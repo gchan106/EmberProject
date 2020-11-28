@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import {tracked} from '@glimmer/tracking';
+import {action} from '@ember/object';
 import { inject as service } from '@ember/service';
 import $ from 'jquery';
 import ENV from 'client/config/environment';
@@ -12,20 +13,16 @@ export default class profileComponent extends Component {
     @tracked desc;
     
     @tracked userInfo;
-    @tracked betsCreated = [];
+    @tracked betsApartOf = [];
 
     constructor(){
         super(...arguments);
         this.username = this.args.username;
         this.userInfo = null;
         this.betsCreated = [];
-        //get user info
-        $.get(`${ENV.APP.API_ENDPOINT}/profile/getUsersBets?username=`+this.username).done(betsUserCreatedList => {
-          this.betsCreated = betsUserCreatedList;
-        });
         //get bet info
-        $.get(`${ENV.APP.API_ENDPOINT}/profile/apartOfBets`, ({username: this.username}), (betsUserCreatedList) => {
-          this.betsCreated = betsUserCreatedList;
+        $.get(`${ENV.APP.API_ENDPOINT}/profile/apartOfBets`, {username: this.args.model.cookie}).done(betsApartOfList => {
+          this.betsApartOf = betsApartOfList;
       });
 }
 
@@ -46,5 +43,18 @@ export default class profileComponent extends Component {
 
       $('#preview-image').attr('src', event.target.result);
 
+  }
+
+  get notEmptyArray(){
+    if(this.betsApartOf.length == 0)
+        return false;
+    else
+        return true;
+  }
+
+  @action
+  redirectToIndiv(id){
+      this.args.betInfoHandler(id);
+      this.args.changePage('createbet');
   }
 };

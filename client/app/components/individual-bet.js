@@ -43,6 +43,9 @@ constructor(){
 
 get getDisplay(){
     this.displayCreateBet = this.args.displayCreateBet;
+    if(!this.displayCreateBet){
+        this.requestData(this.args.betId);
+    }
     return this.displayCreateBet;
 }
 
@@ -160,13 +163,10 @@ inputBetDescriptionValue(input){
     this.currentBetDescriptionValue  = input.target.value;    
 }
 
-requestData(){
-    console.log(this.args.betId)
-    $.get(`${ENV.APP.API_ENDPOINT}/bets/requestdata`, {betID: this.userIdNum}).done( bets=> { 
-    // this pulls all bets that match the ID
-      this.retrievedData = bets;
-      console.log(this.retrievedData)
-    })
+requestData(betID){
+    $.get(`${ENV.APP.API_ENDPOINT}/bets/requestdata?betID=`+betID).done(bets => { 
+        this.individualBet = bets[0];
+    });
 }
 
 requestUserData(){

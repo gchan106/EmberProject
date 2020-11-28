@@ -28,7 +28,7 @@ export default class BetsUserCreatedComponent extends Component {
     @action
     redirectToIndiv(id){
         this.args.betInfoHandler(id);
-        this.args.changePage('createbet', 'false');
+        this.args.changePage('createbet');
     }
 
 

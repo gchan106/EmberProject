@@ -77,10 +77,10 @@
         Create Bet</button>
 
 {{else}}
-        <h1 class= "bet_title">{{individualBet.betData.betName}}</h1>
+        <h1 class= "bet_title"></h1>
 
     {{#if betDataEntered}}
-        <h2 class = "display_individual_bet" > My Bet</h2>
+        <h2 class = "display_individual_bet" >{{this.individualBet.betData.betTitle}}</h2>
         {{else}}
             <h2 class = "display_individual_bet" > {{individualBet.betData.betAdmin}}'s Bet</h2>
 
@@ -101,7 +101,7 @@
                  <th>Date Joined</th>
                  <th>Bet Standing</th>
                 </tr>
-        {{#each nameList key = "index" as |nameList index| }}
+        {{#each individualBet.betData.betParticipants key = "index" as |nameList index| }}
                 <tr>
                 <td>{{nameList.userData.userName}}</td>
                 <td>{{nameList.userData.userTime}}</td>

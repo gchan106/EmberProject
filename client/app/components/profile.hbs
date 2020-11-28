@@ -18,19 +18,19 @@
 <br>
 
 <div>
-  <h2>Current Bets {{@model.username}} Is a Part Of:</h2>
-
+  <h3>Current Bets {{@model.username}} Is a Part Of:</h3>
   <ul>
-    {{#each this.betsCreated key="index" as |betsCreated|}}
+  {{#if this.notEmptyArray}}
+    {{#each this.betsApartOf key="index" as |apart|}}
         <li class="no-dots"> 
-            <LinkTo class="list-mybets-title" @route="bets" @query={{hash id=betsCreated._id}}>{{betsCreated.BetDescription}}</LinkTo>
+            <p class="time-created">{{apart.betData.betParticipants.0.userData.userTime}}</p> 
+            <a href="#" class="list-mybets-title" onclick={{fn redirectToIndiv apart.betID}}>{{apart.betData.betTitle}}</a>
         </li>
     {{/each}}
-    </ul>
-
-
-
-
+  {{else}}
+        <p class="no-created-bets">You are not apart of any bets</p>
+  {{/if}}
+  </ul>
 </div>
 
   

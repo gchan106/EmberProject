@@ -33,16 +33,23 @@ mongo.connect(url, {
 
 
     //get user bet info
-    userBetsCollection = db.collection('userBets');
+    indivBetCollection = db.collection('indivBet')
     app.get('/apartOfBets', function(req, res) {
-        let username = req.query.username;
-        let query = {BetCreator: username};
+        let userCookie = req.query.userCookie;
+        let tempArray = [];
+        let query = {"betData.betParticipants.userID": userCookie};
 
-        userBetsCollection.find(query).toArray((err, items) => {
-            res.json(items);
+        indivBetCollection.find(query).toArray((err, items) => {
+            for(let i = 0; i < items.length; i++){
+
+                if(items[i].betData.betParticipants[0].userID != userCookie){
+                    tempArray.push(items[i])
+                }
+            }
+            res.json(tempArray);
+        });
     });
 
-    indivBetCollection = db.collection('indivBet')
     app.get('/getUsersBets', function(req, res) {
         //sorts userBets by username to get current user's created bets
         let userCookie = req.query.userCookie;
@@ -58,9 +65,6 @@ mongo.connect(url, {
             res.json(tempArray);
         });
     });
-});
-
-
 });
 
 
