@@ -2,8 +2,6 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import $ from 'jquery';
-import ENV from 'client/config/environment';
 
 export default class MainApplicationComponent extends Component {
     @tracked  activePage = 'profile';
@@ -39,19 +37,5 @@ export default class MainApplicationComponent extends Component {
             this.displayCreateBet = false;
         else
             this.displayCreateBet = true;
-    }
-
-    @action 
-    logOut(){
-        //log out request
-        // const cookie = parseInt(this.router._router.currentRoute.attributes.cookie);
-        const cookie = localStorage.getItem('cookie');
-        
-        $.post(`${ENV.APP.API_ENDPOINT}/auth/logout`, ({cookie:cookie}), (result)=>{
-            if(result){
-                this.router.transitionTo('login');
-                console.log(result);
-            }
-        });  
     }
 }

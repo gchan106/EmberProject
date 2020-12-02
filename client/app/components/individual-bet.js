@@ -37,7 +37,7 @@ constructor(){
     this.requestData();
     this.requestUserData(); // when you are at this page you need to get the current user to create a bet and join
     //this.getTimeAndDate();
-    console.log(this.userIdNum);
+    //console.log(this.userIdNum);
 
 }
 
@@ -82,7 +82,7 @@ var amPM = 'AM';
         sec = "0" + sec;
     }
 this.currentTime = '' + month + '/' + day + '/' + year + ' ' + hour + ':' + min + ':' + sec + ' ' + amPM
-console.log(this.currentTime)
+//console.log(this.currentTime)
 
 }
 
@@ -110,8 +110,8 @@ loadSampleData(){
     this.individualBet.betData.betParticipants.pushObject({userID:'104',userData:{userName: 'Jerry', userTime: '4:00', betSide: true, }})
     this.individualBet.betData.betParticipants.pushObject({userID:'105',userData:{userName: 'Summer', userTime: '5:00', betSide: false, }})
     this.nameList = this.individualBet.betData.betParticipants;
-    console.log(this.nameList)
-    console.log(this.individualBet.betData.betParticipants.length)
+    //console.log(this.nameList)
+    //console.log(this.individualBet.betData.betParticipants.length)
     this.createData();
 }
 
@@ -137,7 +137,7 @@ createBet(title, amount, detail){
 
 joinBet(){
 
-    console.log(this.userData)
+    //console.log(this.userData)
     this.getTimeAndDate()
     this.individualBet.betData.betParticipants.pushObject({
         userID: this.userIdNum, // users unique ID to be logged
@@ -147,7 +147,7 @@ joinBet(){
             betSide: this.betAgainst, 
         }
     })
-    console.log(this.individualBet.betData.betParticipants)
+    //console.log(this.individualBet.betData.betParticipants)
     this.updateData();
 }
 resolveBet(){
@@ -173,7 +173,7 @@ requestUserData(){
     $.get(`${ENV.APP.API_ENDPOINT}/bets/requestuserdata`, {userIdNum: this.userIdNum}).done( user=> { 
     // pulls the users data using local storage 'cookie' from login
       this.userData = user;
-      console.log(this.userData)
+      //console.log(this.userData)
     })
 }
 updateData(){
