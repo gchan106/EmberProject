@@ -21,16 +21,17 @@ export default class BetsUserCreatedComponent extends Component {
         });
     }
 
-    // get getTime(betInstance){
-    //     return betInstance.betData.betParticipants[0].userData.userData;
-    // }
+    @action
+    deleteBet(id){
+        $.get(`${ENV.APP.API_ENDPOINT}/bets/deleteBet?betID=`+ id)
+        this.findBetsCreated();
+    }
 
     @action
     redirectToIndiv(id){
         this.args.betInfoHandler(id);
         this.args.changePage('createbet');
     }
-
 
     get notEmptyArray(){
         if(this.betsCreated.length == 0)

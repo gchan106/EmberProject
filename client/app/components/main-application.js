@@ -7,6 +7,7 @@ export default class MainApplicationComponent extends Component {
     @tracked  activePage = 'profile';
     @tracked betID = null;
     @tracked displayCreateBet = true;
+    @tracked isAdmin = false;
     @service router;
     
     get isProfilePage(){
@@ -33,9 +34,19 @@ export default class MainApplicationComponent extends Component {
     @action
     betInfoHandler(id){
         this.betID = id;
-        if(this.betID)
+        if(this.betID){
             this.displayCreateBet = false;
+            this.isAdmin = false;
+            }
         else
             this.displayCreateBet = true;
+            //this.isAdmin = true;
+    }
+    
+    @action
+    betJoin(id){
+        this.betID = id;
+        this.displayCreateBet = false;
+        this.isAdmin = false;
     }
 }

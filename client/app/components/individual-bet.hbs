@@ -1,12 +1,4 @@
 
-<button class = "bet_button_join" onclick={{action this.changeUser}}>  User</button>
-<button class = "bet_button_join" onclick={{action this.changeAdmin}}>  Admin</button>
-<button class = "bet_button_join" onclick={{action this.changeAdminResolvedBet}}>  Resolved</button>
-<button class = "bet_button_join" onclick={{action this.changeAdminUnResolvedBet}}> Admin Unresolved</button>
-<button class = "bet_button_join" onclick={{action this.changeUserUnResolvedBet}}> User Unresolved</button>
-<button class = "bet_button_join" onclick={{action this.loadSampleData}}> Sample Data</button>
-
-<br>
 
 <body class= "main_bet_page">
 
@@ -79,7 +71,7 @@
 {{else}}
         <h1 class= "bet_title"></h1>
 
-    {{#if betDataEntered}}
+    {{#if this.Admin}}
         <h2 class = "display_individual_bet" >{{this.individualBet.betData.betTitle}}</h2>
         {{else}}
             <h2 class = "display_individual_bet" > {{individualBet.betData.betAdmin}}'s Bet</h2>
@@ -91,9 +83,7 @@
             <h4> Description: <br><br> <p>{{individualBet.betData.betDetail}}</p></h4>
         </div>
 
-        <table class = "bet_participant_table">
-    
-
+<table class = "bet_participant_table">    
 
     {{#if betResolution}}
                 <tr>
@@ -116,7 +106,7 @@
                 <th>Whose in on this Bet</th>
                 <th>Outcome</th>
                 </tr>
-            {{#each nameList key = "index" as |nameList index| }}
+            {{#each individualBet.betData.betParticipants key = "index" as |nameList index| }}
                 <tr>
                 <td>{{nameList.userData.userName}}</td>
                 <td>
@@ -133,14 +123,14 @@
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Bet Against me on BetYa!" data-url="http://localhost:4200/" data-hashtags="BetYa" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <br><br><br><br>
         
-    {{#if betDataEntered}}
+    {{#if this.checkAdmin}}
                 {{#if betResolution}}
                 <button class = "button_resolve" onclick={{action this.changeAdminResolvedBet}}> Bet Resolve</button>
                 <button class = "button_resolve"> Bet Unresolved</button>
                 {{else}}
                 <h3 class = "bet_resolved_text"> Bet Resolved</h3>
                 {{/if}}
-            {{else}}
+    {{else}}
             <input 
                 type="radio"
                 name="betside"  

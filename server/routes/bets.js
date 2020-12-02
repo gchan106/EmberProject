@@ -1,6 +1,12 @@
 var express = require('express');
 var app = express();
 
+app.get('/requestalldata', function(req, res) {
+    req.app.get('locals.client').db('bettDb').collection('indivBet').
+        find().
+        toArray((err,indivBet)=>{ res.json(indivBet);})
+});
+
 app.get('/requestdata', function(req, res) {
     var betNum = req.query.betID; 
 
@@ -19,7 +25,6 @@ app.get('/requestuserdata', function(req, res) {
 
 app.get('/updatebetresolution', function(req, res) {
     var betNum = req.query.betID;
-    var betNum = '001';  
 
     req.app.get('locals.client').db('bettDb').collection('indivBet').
         update({ betID : betNum }, { $set: { "betData.betResolution" : true } }, (err, data) => {
@@ -47,8 +52,7 @@ app.get('/createdata', function(req, res) {
 });
 app.get('/updatedata', function(req, res) {
     var queryData = req.query.betData;
-    var betNum = req.query.betID;
-    //var betNum = '001';  
+    var betNum = req.query.betID; 
 
         req.app.get('locals.client').db('bettDb').collection('indivBet').
         update({ betID: betNum},
@@ -57,8 +61,16 @@ app.get('/updatedata', function(req, res) {
                         {res.json('data updated');} 
                     else 
                         {res.json('data not updated');}
-                })
+                }) 
    
+});
+
+app.get('/deleteBet', function(req, res) {
+
+    let betID = req.query.betID;
+    let query = {"betID": betID};
+    req.app.get('locals.client').db('bettDb').collection('indivBet').deleteOne(query)
+
 });
 
 

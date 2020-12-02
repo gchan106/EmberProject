@@ -41,7 +41,7 @@ mongo.connect(url, {
 
         betID: '001',
         betData: {             
-            betTitle: 'Jerry wont Fail',
+            betTitle: 'Ricks Bet',
             betAmount: 20,
             betAdmin: 'Rick',
             isAdmin: true, 

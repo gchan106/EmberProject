@@ -1,0 +1,23 @@
+<div class="container">
+ <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Bet Title</th>
+        <th>Bet Amount</th>
+        <th>Time Created</th>  
+      </tr>
+    </thead>
+{{#each this.betList key = 'index' as |betList|}}
+    <tbody>
+      <tr>
+        <td><a href='#' class="bet_list" onclick={{fn redirectToIndiv betList.betID}}> {{betList.betData.betTitle}}</a> </td>
+        <td>$ {{betList.betData.betAmount}}.00</td>
+        <td>{{betList.betData.betParticipants.0.userData.userTime}}</td>
+          <th><button><a href='#' class="bet_list" onclick={{fn redirectToIndiv betList.betID}}> Join</a></button></th>  
+      </tr>
+    </tbody>
+{{/each}}
+  </table>
+  </div>
+</div>

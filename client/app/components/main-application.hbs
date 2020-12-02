@@ -28,6 +28,25 @@
         @model={{@model}}
         @betId={{this.betID}}
         @displayCreateBet={{this.displayCreateBet}}
+        @isAdmin={{this.isAdmin}}
+    />
+    </div>
+
+    <div class = 'right'>
+    <FriendsList/>
+    <AddFriend/>
+    </div>
+    
+{{/if}}
+
+{{#if this.isActiveBetPage}}
+    <div class = 'left'>
+    <ActiveBets 
+        @model={{@model}}
+        @betId={{this.betID}}
+        @changePage={{this.navigateTo}}
+        @betJoin={{this.betJoin}}
+
     />
     </div>
 
