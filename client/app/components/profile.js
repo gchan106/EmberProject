@@ -27,14 +27,14 @@ export default class profileComponent extends Component {
 }
 
     uploadFile(event) {
-      var self = this;
+      //var self = this;
       const reader = new FileReader();
       const file = event.target.files[0];
-      let imageData;
+      //let imageData;
 
       reader.onload = function() {
-      imageData = reader.result;
-      self = ('image', imageData);
+      //imageData = reader.result;
+      //self = ('image', imageData);
       };
 
       if (file) {
@@ -57,4 +57,4 @@ export default class profileComponent extends Component {
       this.args.betInfoHandler(id);
       this.args.changePage('createbet');
   }
-};
+}

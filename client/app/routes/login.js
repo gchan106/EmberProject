@@ -9,7 +9,7 @@ export default class LoginRoute extends Route {
         return $.get(`${ENV.APP.API_ENDPOINT}/auth/isloggedin?cookie=${cookie}`);
     }
 
-    afterModel(model, transition) {
+    afterModel(model) {
         if (model && model.isLoggedIn) { // if there model is empty, take us to log in route
           this.transitionTo('/');
         }
