@@ -24,7 +24,7 @@ export default class AddFriendComponent extends Component {
         // console.log(this.args.model)
         this.userRequester = this.args.model.username
 
-        //userReceiver TBD how to go through other users' profiles
+        //Change this hardcode to wherever the user clicks on the table.
         //for now continue with fake data to send to db
         this.userReceiver = "Victoria"
     }
