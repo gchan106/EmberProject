@@ -11,7 +11,7 @@ export default class profileComponent extends Component {
     @tracked username;
     @tracked id;
     @tracked desc;
-
+    
     @tracked userInfo;
     @tracked betsApartOf = [];
 
@@ -21,7 +21,7 @@ export default class profileComponent extends Component {
         this.userInfo = null;
         this.betsCreated = [];
         //get bet info
-        $.get(${ENV.APP.API_ENDPOINT}/profile/apartOfBets, {username: this.args.model.cookie}).done(betsApartOfList => {
+        $.get(`${ENV.APP.API_ENDPOINT}/profile/apartOfBets`, {username: this.args.model.cookie}).done(betsApartOfList => {
           this.betsApartOf = betsApartOfList;
       });
 }

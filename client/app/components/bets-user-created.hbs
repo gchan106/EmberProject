@@ -1,0 +1,17 @@
+<div class="">
+    <h3 class="mybets-heading">Active Bets {{@model.username}} Has Created</h3>
+    <ul data-test-bets-user-created>
+    {{#if this.notEmptyArray}}
+    {{#each this.betsCreated key="index" as |betsCreated|}}
+        <li class="no-dots"> 
+            <p class="time-created">{{betsCreated.betData.betParticipants.0.userData.userTime}}</p> 
+            <a href="#" class="list-mybets-title" onclick={{fn redirectToIndiv betsCreated.betID}}>{{betsCreated.betData.betTitle}}</a>
+        </li>
+    {{/each}}
+    {{else}}
+        <p class="no-created-bets">You have not created any bets</p>
+    {{/if}}
+    </ul>
+</div>
+
+{{yield}}

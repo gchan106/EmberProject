@@ -5,12 +5,12 @@
 <button class = "bet_button_join" onclick={{action this.changeAdminUnResolvedBet}}> Admin Unresolved</button>
 <button class = "bet_button_join" onclick={{action this.changeUserUnResolvedBet}}> User Unresolved</button>
 <button class = "bet_button_join" onclick={{action this.loadSampleData}}> Sample Data</button>
-<button class = "bet_button_join" onclick={{action this.newData}}> Clear Data</button>
+
 <br>
 
 <body class= "main_bet_page">
 
-{{#if displayCreateBet}}
+{{#if this.getDisplay}}
     <h1 class = "create_bet" > Create a Bet</h1>
 
         <table class ="bet_input_field_table">
@@ -73,15 +73,14 @@
                 currentBetAmountValue 
                 currentBetDescriptionValue
                 betSide
-
-            }}>
+        }}>
         Create Bet</button>
 
 {{else}}
-        <h1 class= "bet_title">{{individualBet.betData.betName}}</h1>
+        <h1 class= "bet_title"></h1>
 
     {{#if betDataEntered}}
-        <h2 class = "display_individual_bet" > My Bet</h2>
+        <h2 class = "display_individual_bet" >{{this.individualBet.betData.betTitle}}</h2>
         {{else}}
             <h2 class = "display_individual_bet" > {{individualBet.betData.betAdmin}}'s Bet</h2>
 
@@ -102,7 +101,7 @@
                  <th>Date Joined</th>
                  <th>Bet Standing</th>
                 </tr>
-        {{#each nameList key = "index" as |nameList index| }}
+        {{#each individualBet.betData.betParticipants key = "index" as |nameList index| }}
                 <tr>
                 <td>{{nameList.userData.userName}}</td>
                 <td>{{nameList.userData.userTime}}</td>
@@ -126,10 +125,12 @@
                 </td>
                 </tr>      
             {{/each}}
+            
     {{/if}}
 
 
 </table>
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Bet Against me on BetYa!" data-url="http://localhost:4200/" data-hashtags="BetYa" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <br><br><br><br>
         
     {{#if betDataEntered}}
@@ -138,7 +139,6 @@
                 <button class = "button_resolve"> Bet Unresolved</button>
                 {{else}}
                 <h3 class = "bet_resolved_text"> Bet Resolved</h3>
-
                 {{/if}}
             {{else}}
             <input 
@@ -155,8 +155,7 @@
             <button 
                 class = "button_resolve"  
                 onclick = {{ action joinBet}}>
-                Join Bet</button>
-
+                Join Bet</button>        
     {{/if}}
 {{/if}}
 </body>

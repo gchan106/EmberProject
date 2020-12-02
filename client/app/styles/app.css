@@ -226,6 +226,20 @@ nav.topnav {
 	color: #ff5900;
 }
 
+.left{
+	float: left;
+	width: 85%;
+	position: absolute;
+
+}
+.right{
+	float: right;
+	width: 15%;
+	padding-left: 15px;
+	border-left: 1px solid #ff5900;
+
+}
+
 
 /* Add a color to the active/current link */
 

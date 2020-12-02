@@ -7,6 +7,8 @@ import ENV from 'client/config/environment';
 
 export default class MainApplicationComponent extends Component {
     @tracked  activePage = 'profile';
+    @tracked betID = null;
+    @tracked displayCreateBet = true;
     @service router;
     
     get isProfilePage(){
@@ -20,10 +22,23 @@ export default class MainApplicationComponent extends Component {
     get isCreateBetPage(){
         return this.activePage === 'createbet';
     }
+    get isSignUpPage(){
+        return this.activePage === 'signup';
+    }
+
 
     @action
     navigateTo(page){
         this.activePage=page;
+    }
+
+    @action
+    betInfoHandler(id){
+        this.betID = id;
+        if(this.betID)
+            this.displayCreateBet = false;
+        else
+            this.displayCreateBet = true;
     }
 
     @action 

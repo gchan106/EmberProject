@@ -10,10 +10,15 @@ mongo.connect(url, {
     if (err) {
         return
     }
+
     app.get('/', function(req, res) {
         res.json("Test Profile");
     });
+
+
     const db = client.db('bettDb');
+
+
     //get user info
     userAccountsCollection = db.collection('userAccounts');
     app.get('/users', function(req, res) {
@@ -23,14 +28,18 @@ mongo.connect(url, {
             res.json(users);
         }); 
     });
+
+
     //get user bet info
     indivBetCollection = db.collection('indivBet')
     app.get('/apartOfBets', function(req, res) {
         let userCookie = req.query.userCookie;
         let tempArray = [];
         let query = {"betData.betParticipants.userID": userCookie};
+
         indivBetCollection.find(query).toArray((err, items) => {
             for(let i = 0; i < items.length; i++){
+
                 if(items[i].betData.betParticipants[0].userID != userCookie){
                     tempArray.push(items[i])
                 }
@@ -53,4 +62,6 @@ mongo.connect(url, {
         });
     });
 });
+
+
 module.exports = app;
