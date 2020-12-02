@@ -21,6 +21,7 @@ export default class AddFriendComponent extends Component {
         // let fakeUserSender = {firstName: "Jasper" , lastName:"Caballero"}
         // let fakeUserReceiver = {firstName: "George", lastName:"Chan"}
 
+        // console.log(this.args.model)
         this.userRequester = this.args.model.username
 
         //userReceiver TBD how to go through other users' profiles

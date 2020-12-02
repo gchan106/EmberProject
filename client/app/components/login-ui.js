@@ -10,9 +10,9 @@ export default class LoginComponent extends Component {
     @tracked message = null;
     @tracked status = false;
     @service router;
-    @tracked username;
-    @tracked password;
-    @tracked logInSuccess = true;
+    // @tracked username;
+    // @tracked password;
+    // @tracked logInSuccess = true;
 
     constructor(){
         super(...arguments);
@@ -45,28 +45,6 @@ export default class LoginComponent extends Component {
         }
     }
             
-    logIn(){
-        if(this.username && this.password){
-            $.post(`${ENV.APP.API_ENDPOINT}/auth/login`, ({username: this.username,password: this.password}), (result)=>{
-                if(result && result.isLoggedIn){
-                    localStorage.setItem('cookie',result.cookie);
-                    this.router.transitionTo('/');
-                    this.logInSuccess = true;
-
-                }
-                else{
-                    this.message = "Wrong username or password!"
-                    this.status = true;
-                    this.hideAlert();
-                }
-            })
-        }
-        else{
-            this.message = "Please enter a username or password!"
-            this.status = true;
-            this.hideAlert();
-        }
-    }
 
     getUsername(input){
         this.userName = input.target.value;
@@ -83,12 +61,6 @@ export default class LoginComponent extends Component {
                 this.message = null;
             }, 3000)    
         }        
-
-            //     else
-            //     {
-            //         this.logInSuccess = false;
-            //     }
-            //   });
              
         }
         

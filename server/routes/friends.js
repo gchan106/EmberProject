@@ -5,14 +5,17 @@ var app = express();
 app.get('/friendlist', function(req, res) {
     // given the username of the current logged in member, get his friend list
     //req.query.username
-    req.app.get('locals.client').db('bettDb').collection('userFriends').find({username: req.query.username}).toArray((err, items) => {
-      res.json(items);
+    req.app.get('locals.client').db('bettDb').collection('userFriends').find({username: req.query.username}).toArray((err , items) => {
+      res.json(items[0]);
       //console.log(req.query.username)
     })
 })
 app.get('/addfriend', function(req, res) {
+  console.log(req.query.usernameRequest)
+  console.log(req.query.usernameReceiver)
   // using username or unique ID of a friend, add it to username using mongo
-  req.app.get('locals.client').db('bettDb').collection('userAccounts').find(req.query.usernameReceiver).toArray((err, foundProfile) => {
+  req.app.get('locals.client').db('bettDb').collection('userAccounts').findOne( {username: req.query.usernameReceiver}, (err, foundProfile) => {
+    console.log(foundProfile)
     let hasAddedFriend = false
     
     if(foundProfile)
@@ -21,10 +24,10 @@ app.get('/addfriend', function(req, res) {
         {username: req.query.usernameRequest},
 
         //apparently in the db right now, the friendsWith param is a string right now, I think it should be an array.
-        {$push: {"friendsWith": req.query.usernameReceiver}}
+        {$push: {"friendsWith": foundProfile}},
 
-      )
-
+     ) 
+      
       hasAddedFriend = true
     }
     

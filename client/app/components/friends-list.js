@@ -14,7 +14,11 @@ export default class FriendsListComponent extends Component {
         //is there
         //${this.args.model.username}
         $.get(`${ENV.APP.API_ENDPOINT}/friends/friendlist?username=${this.args.model.username}`).done(friendList => {
-            this.friendsListData = friendList
+            console.log("response from db" , friendList)
+            //console.log(friendList.friendsWith)
+            this.friendsListData = friendList.friendsWith
+
+            console.log("what i set data to" , this.friendsListData)
         })
         // let fakeFriendsData = [{firstName: "Jasper", lastName: "Caballero", img: "http://placekitten.com/200/300"} , {firstName: "Daniel", lastName: "Dolan", img:"http://placekitten.com/300/300"}, {firstName: "Victoria", lastName: "Fischer", img: "http://placekitten.com/201/300"}]
         // this.friendsListData = fakeFriendsData
