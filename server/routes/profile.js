@@ -1,7 +1,6 @@
 const { json } = require('express');
 var express = require('express');
 var app = express();
-
 const mongo = require('mongodb').MongoClient
 const url = 'mongodb://localhost:27017';
 mongo.connect(url, {
@@ -25,7 +24,6 @@ mongo.connect(url, {
     app.get('/users', function(req, res) {
         let user = req.query.username;
         let query = {username: user};
-
         userAccountsCollection.find(query).toArray((err, users) => {
             res.json(users);
         }); 
@@ -49,7 +47,6 @@ mongo.connect(url, {
             res.json(tempArray);
         });
     });
-
     app.get('/getUsersBets', function(req, res) {
         //sorts userBets by username to get current user's created bets
         let userCookie = req.query.userCookie;
@@ -57,7 +54,6 @@ mongo.connect(url, {
         let query = {"betData.betParticipants.userID": userCookie};
         indivBetCollection.find(query).toArray((err, items) => {
             for(let i = 0; i < items.length; i++){
-
                 if(items[i].betData.betParticipants[0].userID == userCookie){
                     tempArray.push(items[i])
                 }

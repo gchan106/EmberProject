@@ -113,7 +113,9 @@ mongo.connect(url, {
     })
     friendsCollection.insertOne({
         username: 'daniel',
-        friendsWith: 'jasper'
+        friendsWith: [
+            {username: 'Jasper'}
+        ]
     }, (err, result) => {})
     activeBetsCollection.insertOne({
         BetCreator: 'daniel',
