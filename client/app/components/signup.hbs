@@ -9,20 +9,20 @@
 <div class="welcome">
     <h1>Welcome to TEMPNAME</h1>
 </div>
-<div class="login_box">
-    <h1>Login</h1>
+<div class="signup_box">
+    <h1>Sign Up</h1>
     <div class="input_box">       
-        <input type="text" placeholder="Username" maxlength="40" value={{userName}} onchange={{action getUsername}}>
+        <input type="text" placeholder="Username" maxlength="40" value={{userName}} onchange={{action getUsername}} required>
         <i class="icon fa fa-user"></i>
     </div>
     <div class="input_box">        
-        <input type="password" placeholder="Password" maxlength="40" value={{userPass}} onchange={{action getUserpass}}>
+        <input type="password" placeholder="Password" maxlength="40" required minlength="8" value={{userPass}} onchange={{action getUserpass}}>
         <i class="icon fa fa-lock"></i>  
     </div>  
     
-    <button type="submit" class="btn" onclick={{action checkInfo}}>Log In</button>
+    <button type="submit" class="btn" onclick={{action checkInfo}}>Sign Up</button>
     <div class="sign_up">
-        <p>Not a member? <LinkTo @route="signup">Sign up now!</LinkTo></p>
+        <p>Already a member? <LinkTo @route="login">Log in now!</LinkTo></p>
     </div>
 </div>
 

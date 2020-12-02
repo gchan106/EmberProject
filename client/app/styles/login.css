@@ -1,0 +1,25 @@
+.login_box{
+    width: 350px;
+    height: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgb(0, 0, 0, .2);
+    box-shadow: 0 0 8px 0 black;
+}
+
+.remember{
+    padding-bottom: 10px;
+}
+
+.sign_up, .forgot{
+    padding-top: 10px;
+}
+
+.remember, .forgot, .sign_up{
+    font-size: 17px;
+    font-weight: bold;
+}

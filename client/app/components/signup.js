@@ -4,32 +4,28 @@ import { inject as service }from '@ember/service';
 import $ from 'jquery';
 import ENV from 'client/config/environment';
 
-export default class LoginComponent extends Component {
+export default class SignupComponent extends Component {
     @tracked userName = null;
     @tracked userPass = null;
+    @service router;
     @tracked message = null;
     @tracked status = false;
-    @service router;
 
     constructor(){
         super(...arguments);
-        this.status = this.router.currentRoute.queryParams.signedup;
-        if(this.status == 'true'){
-            this.status = true;
-            this.message = "Signed up Sucessfully!"
-        }
         this.hideAlert();
     }
-
+    
     checkInfo(){
         if(this.userName && this.userPass){
-            $.post(`${ENV.APP.API_ENDPOINT}/auth/login`, ({username: this.userName,password: this.userPass}), (result)=>{
-                if(result && result.isLoggedIn){
-                    localStorage.setItem('cookie',result.cookie);
-                    this.router.transitionTo('/');
+            $.post(`${ENV.APP.API_ENDPOINT}/auth/signup`, ({username: this.userName,password: this.userPass}), (result)=>{
+                if(result){
+                    this.message = "Signed up successfully!"
+                    this.status = true;
+                    this.router.transitionTo('login', {queryParams: {signedup: this.status}});              
                 }
                 else{
-                    this.message = "Wrong username or password!"
+                    this.message = "User already exists!"
                     this.status = true;
                     this.hideAlert();
                 }
@@ -43,7 +39,7 @@ export default class LoginComponent extends Component {
     }
 
     getUsername(input){
-        this.userName = input.target.value;
+        this.userName = input.target.value;       
     }
 
     getUserpass(input){
