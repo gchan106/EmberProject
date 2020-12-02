@@ -1,6 +1,12 @@
 var express = require('express');
 var app = express();
 
+app.get('/requestalldata', function(req, res) {
+    req.app.get('locals.client').db('bettDb').collection('indivBet').
+        find().
+        toArray((err,indivBet)=>{ res.json(indivBet);})
+});
+
 app.get('/requestdata', function(req, res) {
     var betNum = req.query.betID; 
 
@@ -19,9 +25,9 @@ app.get('/requestuserdata', function(req, res) {
 
 app.get('/updatebetresolution', function(req, res) {
     var betNum = req.query.betID;
-    var betNum = '001';  
+    //var betNum = '001';  
 
-    req.app.get('locals.client').db('bettDb').collection('indivBet').
+    req.app.get('locals.client').db('bettDb').collection('indivBet').// so this updates but we need to update false using string but not finding it so FIX itS
         update({ betID : betNum }, { $set: { "betData.betResolution" : true } }, (err, data) => {
             if(data)
                 {res.json('Bet resolution entered');} 
@@ -47,8 +53,7 @@ app.get('/createdata', function(req, res) {
 });
 app.get('/updatedata', function(req, res) {
     var queryData = req.query.betData;
-    var betNum = req.query.betID;
-    //var betNum = '001';  
+    var betNum = req.query.betID; 
 
         req.app.get('locals.client').db('bettDb').collection('indivBet').
         update({ betID: betNum},
@@ -57,8 +62,19 @@ app.get('/updatedata', function(req, res) {
                         {res.json('data updated');} 
                     else 
                         {res.json('data not updated');}
-                })
+                }) 
    
+});
+//indivBetCollection = db.collection('indivBet')
+app.get('/deleteBet', function(req, res) {
+    //sorts userBets by username to get current user's created bets
+    let betID = req.query.betID;
+    let query = {"betID": betID};
+    req.app.get('locals.client').db('bettDb').collection('indivBet').deleteOne(query)
+
+    //indivBetCollection.deleteOne(query, function(err, obj) {
+    //    if (err) throw err;
+    //    console.log("bet deleted");
 });
 
 

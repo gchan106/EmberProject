@@ -9,13 +9,12 @@ export default class IndividualBetComponent extends Component {
 @tracked currentTime;
 
 @tracked betResolution = true;
-@tracked betDataEntered = true;
+@tracked isAdmin = true;
 @tracked displayCreateBet;
 @tracked nameList = [];
 @tracked individualBet = {}
 @tracked betAgainst = null;
 @tracked userIdNum;
-@tracked retrievedData;
 @tracked userData;
 @tracked currentBetID; //depends on which bet you join get the ID of the bet
 
@@ -29,15 +28,14 @@ export default class IndividualBetComponent extends Component {
 constructor(){
     super(...arguments)
     this.currentBetID = '' ; 
-
-    // when you join a bet from a list of existing bets in the home, 
-    // bet that gets loaded and updated is the existing betID that needs to be pulled from the database
     this.userIdNum = localStorage.getItem('cookie');
-    //this.loadSampleData();
-    this.requestData();
     this.requestUserData(); // when you are at this page you need to get the current user to create a bet and join
+<<<<<<< HEAD
     //this.getTimeAndDate();
     //console.log(this.userIdNum);
+=======
+    console.log(this.userIdNum);
+>>>>>>> 930b42be... updated home, ui, added delete
 
 }
 
@@ -45,18 +43,26 @@ get getDisplay(){
     this.displayCreateBet = this.args.displayCreateBet;
     if(!this.displayCreateBet){
         this.requestData(this.args.betId);
+        console.log(this.args.betId)
     }
     return this.displayCreateBet;
 }
 
+get checkAdmin(){
+    this.isAdmin = this.args.isAdmin;
+    console.log(this.isAdmin)
+    return this.isAdmin;
+    
+}
+
 getTimeAndDate(){
-var hour = null;
-var min = null;
-var sec = null;
-var day = null;
-var month = null;
-var year = null;
-var amPM = 'AM';
+    var hour = null;
+    var min = null;
+    var sec = null;
+    var day = null;
+    var month = null;
+    var year = null;
+    var amPM = 'AM';
 
     var t = new Date();
     month = t.getMonth() + 1;
@@ -81,6 +87,7 @@ var amPM = 'AM';
     if(sec < 10){ // 0 infront of seconds if less than 10
         sec = "0" + sec;
     }
+<<<<<<< HEAD
 this.currentTime = '' + month + '/' + day + '/' + year + ' ' + hour + ':' + min + ':' + sec + ' ' + amPM
 //console.log(this.currentTime)
 
@@ -116,13 +123,19 @@ loadSampleData(){
 }
 
 createBet(title, amount, detail){
+=======
+    this.currentTime = '' + month + '/' + day + '/' + year + ' ' + hour + ':' + min + ':' + sec + ' ' + amPM
+    console.log(this.currentTime)
+}
+
+createBet(title, amount, detail){// theres no create problems in creatiion but only reading fix it.
+>>>>>>> 930b42be... updated home, ui, added delete
     this.currentTime = new Date();
     this.individualBet = {
         betData: {             
             betTitle: title,
             betAmount: amount,
             betAdmin: this.userData[0].username, // should be a unique key as identifier it is currently the cookie
-            isAdmin: true, 
             betResolution: false,
             betDetail: detail,
             betParticipants:[],
@@ -130,7 +143,7 @@ createBet(title, amount, detail){
     }
     this.getTimeAndDate()
     this.individualBet.betData.betParticipants.pushObject({userID:this.userIdNum,userData:{userName: this.userData[0].username, userTime: this.currentTime, betSide: this.betAgainst, }})
-    this.nameList = this.individualBet.betData.betParticipants;
+    //this.nameList = this.individualBet.betData.betParticipants;
     this.displayCreateBet = false;
     this.createData();
 }
@@ -147,7 +160,12 @@ joinBet(){
             betSide: this.betAgainst, 
         }
     })
+<<<<<<< HEAD
     //console.log(this.individualBet.betData.betParticipants)
+=======
+    console.log(this.individualBet.betData.betParticipants)
+    console.log(this.betAgainst)
+>>>>>>> 930b42be... updated home, ui, added delete
     this.updateData();
 }
 resolveBet(){
@@ -163,9 +181,14 @@ inputBetDescriptionValue(input){
     this.currentBetDescriptionValue  = input.target.value;    
 }
 
-requestData(betID){
+requestData(betID){// so dan made it to request only the first which this should request all need to make and divide for both// maybe make this for user requests
     $.get(`${ENV.APP.API_ENDPOINT}/bets/requestdata?betID=`+betID).done(bets => { 
         this.individualBet = bets[0];
+        for(var i = 0; i <this.individualBet.betData.betParticipants.length; i++){
+        this.individualBet.betData.betParticipants[i].userData.betSide = JSON.parse(this.individualBet.betData.betParticipants[i].userData.betSide);
+        }
+        console.log(this.individualBet)
+        console.log(this.individualBet.betData.betParticipants.length)
     });
 }
 
@@ -179,16 +202,17 @@ requestUserData(){
 updateData(){
     $.get(`${ENV.APP.API_ENDPOINT}/bets/updatedata`, {
     // pulls the users data using local storage 'cookie' from login
-    // bedID should already exist it shouldnt update
-        betID: this.currentBetID, 
+    // bedID should already exist it should update to mongoDB
+        betID: this.args.betId,
         betData: this.individualBet.betData
         }
+
     )}
 
 createData(){
     this.currentBetID = Date.parse(new Date()), 
     $.get(`${ENV.APP.API_ENDPOINT}/bets/createdata`, {
-    // creates a unique ID from date, pass the bet data thru query
+    // creates a unique ID from date, pass the bet data thru query and BetID as a unique key unless you want to use object_id w/e its called
         betID: this.currentBetID, 
         betData: this.individualBet.betData,
         
@@ -196,26 +220,29 @@ createData(){
     )}
 
 updateResolution(){
+    //this.currentBetID;//should pull when called
+    this.requestData(this.args.betId);
+    console.log(this.args.betId)
     $.get(`${ENV.APP.API_ENDPOINT}/bets/updatebetresolution`, {
-        betID: this.userIdNum})
+        betID: this.args.betId})// so when calling u need to get it from profile
 }
-loadFakeData() {this.displayCreateBet = false}
+loadFakeData() {this.displayCreateBet = false}// still useful to just click not type.
 
-changeUser() {this.displayCreateBet = false}
+changeUser() {this.displayCreateBet = false}//delete
 
-changeAdmin() {this.displayCreateBet = true}
+changeAdmin() {this.displayCreateBet = true}//delete
 
-changeAdminUnResolvedBet(){
+changeAdminUnResolvedBet(){ // delete
     this.betResolution = true;
     this.betDataEntered = true;
 }
 
-changeUserUnResolvedBet(){
+changeUserUnResolvedBet(){// delete
     this.betResolution = true;
     this.betDataEntered = false;
 }
 
-changeAdminResolvedBet(){
+changeAdminResolvedBet(){//delete
     this.betResolution = false;
     this.updateResolution();
     this.updateData();

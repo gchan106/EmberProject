@@ -20,14 +20,21 @@ export default class BetsUserCreatedComponent extends Component {
             this.betsCreated = betsUserCreatedList;
         });
     }
+    @action
+    deleteBet(id){
+        $.get(`${ENV.APP.API_ENDPOINT}/bets/deleteBet?betID=`+ id)
+        this.findBetsCreated();
+
+
+    }
 
     // get getTime(betInstance){
     //     return betInstance.betData.betParticipants[0].userData.userData;
     // }
 
     @action
-    redirectToIndiv(id){
-        this.args.betInfoHandler(id);
+    redirectToIndiv(id){ //this gets the id of the bet to load a detailed page of that betID
+        this.args.betInfoHandler(id);// goes to main app hbs to call these functions using cookie
         this.args.changePage('createbet');
     }
 

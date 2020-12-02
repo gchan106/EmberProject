@@ -1,17 +1,33 @@
-<div class="">
-    <h3 class="mybets-heading">Active Bets {{@model.username}} Has Created</h3>
-    <ul data-test-bets-user-created>
-    {{#if this.notEmptyArray}}
+<div class="container">
+ <div class="table-responsive">
+         <h3 class="mybets-heading">Active Bets {{@model.username}} Has Created</h3>          
+  <table class="table">
+          <thead>
+      <tr>
+        <th>Bet Title</th>
+        <th>Bet Amount</th>
+        <th>Time Created</th>  
+      </tr>
+    </thead>
+{{#if this.notEmptyArray}}
     {{#each this.betsCreated key="index" as |betsCreated|}}
-        <li class="no-dots"> 
-            <p class="time-created">{{betsCreated.betData.betParticipants.0.userData.userTime}}</p> 
-            <a href="#" class="list-mybets-title" onclick={{fn redirectToIndiv betsCreated.betID}}>{{betsCreated.betData.betTitle}}</a>
-        </li>
-    {{/each}}
-    {{else}}
+
+    <tbody>
+      <tr>
+        <td><a href='#' class="bet_list" onclick={{fn redirectToIndiv betsCreated.betID}}> {{betsCreated.betData.betTitle}}</a> </td>
+                <td>$ {{betsCreated.betData.betAmount}}.00</td>
+        <td>{{betsCreated.betData.betParticipants.0.userData.userTime}}</td>
+
+                <th><button><a href='#' class="bet_list" onclick={{fn deleteBet betsCreated.betID}}> Delete</a></button></th>  
+      </tr>
+    </tbody>
+    
+{{/each}}
+        {{else}}
         <p class="no-created-bets">You have not created any bets</p>
     {{/if}}
-    </ul>
-</div>
 
-{{yield}}
+
+  </table>
+  </div>
+</div>

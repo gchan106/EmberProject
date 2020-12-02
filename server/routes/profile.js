@@ -31,7 +31,7 @@ mongo.connect(url, {
 
 
     //get user bet info
-    indivBetCollection = db.collection('indivBet')
+    indivBetCollection = db.collection('indivBet')// why do we declare a collection here since it already made
     app.get('/apartOfBets', function(req, res) {
         let userCookie = req.query.userCookie;
         let tempArray = [];

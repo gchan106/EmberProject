@@ -7,6 +7,7 @@ export default class MainApplicationComponent extends Component {
     @tracked  activePage = 'profile';
     @tracked betID = null;
     @tracked displayCreateBet = true;
+    @tracked isAdmin = false;
     @service router;
     
     get isProfilePage(){
@@ -31,11 +32,21 @@ export default class MainApplicationComponent extends Component {
     }
 
     @action
-    betInfoHandler(id){
+    betInfoHandler(id){// this calls the page to display but we also pass in id aka 'cookie' to be used in that .js we navigate to
         this.betID = id;
-        if(this.betID)
+        if(this.betID){// changes indivBet status from here.
             this.displayCreateBet = false;
+            this.isAdmin = false;
+            }
         else
             this.displayCreateBet = true;
+            this.isAdmin = true;
+    }
+    
+    @action
+    betJoin(id){// this calls the page to display but we also pass in id aka 'cookie' to be used in that .js we navigate to
+        this.betID = id;
+        this.displayCreateBet = false;
+        this.isAdmin = false;
     }
 }
