@@ -32,19 +32,19 @@ export default class MainApplicationComponent extends Component {
     }
 
     @action
-    betInfoHandler(id){// this calls the page to display but we also pass in id aka 'cookie' to be used in that .js we navigate to
+    betInfoHandler(id){
         this.betID = id;
-        if(this.betID){// changes indivBet status from here.
+        if(this.betID){
             this.displayCreateBet = false;
             this.isAdmin = false;
             }
         else
             this.displayCreateBet = true;
-            this.isAdmin = true;
+            //this.isAdmin = true;
     }
     
     @action
-    betJoin(id){// this calls the page to display but we also pass in id aka 'cookie' to be used in that .js we navigate to
+    betJoin(id){
         this.betID = id;
         this.displayCreateBet = false;
         this.isAdmin = false;

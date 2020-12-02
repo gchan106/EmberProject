@@ -9,24 +9,23 @@
         <th>Time Created</th>  
       </tr>
     </thead>
+    
 {{#if this.notEmptyArray}}
     {{#each this.betsCreated key="index" as |betsCreated|}}
 
     <tbody>
       <tr>
         <td><a href='#' class="bet_list" onclick={{fn redirectToIndiv betsCreated.betID}}> {{betsCreated.betData.betTitle}}</a> </td>
-                <td>$ {{betsCreated.betData.betAmount}}.00</td>
+        <td>$ {{betsCreated.betData.betAmount}}.00</td>
         <td>{{betsCreated.betData.betParticipants.0.userData.userTime}}</td>
-
-                <th><button><a href='#' class="bet_list" onclick={{fn deleteBet betsCreated.betID}}> Delete</a></button></th>  
+        <th><button><a href='#' class="bet_list" onclick={{fn deleteBet betsCreated.betID}}> Delete</a></button></th>  
       </tr>
     </tbody>
     
 {{/each}}
-        {{else}}
-        <p class="no-created-bets">You have not created any bets</p>
+    {{else}}
+    <p class="no-created-bets">You have not created any bets</p>
     {{/if}}
-
 
   </table>
   </div>

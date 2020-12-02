@@ -20,24 +20,18 @@ export default class BetsUserCreatedComponent extends Component {
             this.betsCreated = betsUserCreatedList;
         });
     }
+
     @action
     deleteBet(id){
         $.get(`${ENV.APP.API_ENDPOINT}/bets/deleteBet?betID=`+ id)
         this.findBetsCreated();
-
-
     }
-
-    // get getTime(betInstance){
-    //     return betInstance.betData.betParticipants[0].userData.userData;
-    // }
 
     @action
     redirectToIndiv(id){
         this.args.betInfoHandler(id);
         this.args.changePage('createbet');
     }
-
 
     get notEmptyArray(){
         if(this.betsCreated.length == 0)

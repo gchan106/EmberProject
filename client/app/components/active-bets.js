@@ -12,20 +12,17 @@ export default class IndividualBetComponent extends Component {
 constructor(){
     super(...arguments)
     this.requestAllBetData();
-
 }
-
 
 requestAllBetData(){
     $.get(`${ENV.APP.API_ENDPOINT}/bets/requestalldata`).done(data => { 
         this.betList = data;
-        
-
     });
 }
+
 @action
-redirectToIndiv(id){ //this gets the id of the bet to load a detailed page of that betID
-    this.args.betJoin(id);// goes to main app hbs to call these functions using cookie
+redirectToIndiv(id){
+    this.args.betJoin(id);
     this.args.changePage('createbet');
 }
 
