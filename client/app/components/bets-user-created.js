@@ -33,8 +33,8 @@ export default class BetsUserCreatedComponent extends Component {
     // }
 
     @action
-    redirectToIndiv(id){ //this gets the id of the bet to load a detailed page of that betID
-        this.args.betInfoHandler(id);// goes to main app hbs to call these functions using cookie
+    redirectToIndiv(id){
+        this.args.betInfoHandler(id);
         this.args.changePage('createbet');
     }
 

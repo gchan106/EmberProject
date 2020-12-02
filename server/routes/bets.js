@@ -25,9 +25,8 @@ app.get('/requestuserdata', function(req, res) {
 
 app.get('/updatebetresolution', function(req, res) {
     var betNum = req.query.betID;
-    //var betNum = '001';  
 
-    req.app.get('locals.client').db('bettDb').collection('indivBet').// so this updates but we need to update false using string but not finding it so FIX itS
+    req.app.get('locals.client').db('bettDb').collection('indivBet').
         update({ betID : betNum }, { $set: { "betData.betResolution" : true } }, (err, data) => {
             if(data)
                 {res.json('Bet resolution entered');} 
@@ -65,16 +64,13 @@ app.get('/updatedata', function(req, res) {
                 }) 
    
 });
-//indivBetCollection = db.collection('indivBet')
+
 app.get('/deleteBet', function(req, res) {
-    //sorts userBets by username to get current user's created bets
+
     let betID = req.query.betID;
     let query = {"betID": betID};
     req.app.get('locals.client').db('bettDb').collection('indivBet').deleteOne(query)
 
-    //indivBetCollection.deleteOne(query, function(err, obj) {
-    //    if (err) throw err;
-    //    console.log("bet deleted");
 });
 
 

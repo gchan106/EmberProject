@@ -18,8 +18,6 @@ mongo.connect(url, {
 
     const db = client.db('bettDb');
 
-
-    //get user info
     userAccountsCollection = db.collection('userAccounts');
     app.get('/users', function(req, res) {
         let user = req.query.username;
@@ -30,8 +28,8 @@ mongo.connect(url, {
     });
 
 
-    //get user bet info
-    indivBetCollection = db.collection('indivBet')// why do we declare a collection here since it already made
+ 
+    indivBetCollection = db.collection('indivBet')
     app.get('/apartOfBets', function(req, res) {
         let userCookie = req.query.userCookie;
         let tempArray = [];
@@ -48,7 +46,7 @@ mongo.connect(url, {
         });
     });
     app.get('/getUsersBets', function(req, res) {
-        //sorts userBets by username to get current user's created bets
+
         let userCookie = req.query.userCookie;
         let tempArray = [];
         let query = {"betData.betParticipants.userID": userCookie};
