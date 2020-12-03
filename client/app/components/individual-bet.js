@@ -9,14 +9,8 @@ export default class IndividualBetComponent extends Component {
 @tracked currentTime;
 
 @tracked betResolution = true;
-<<<<<<< HEAD
 @tracked isAdmin = true;
 @tracked displayCreateBet;
-=======
-@tracked betDataEntered = true;
-@tracked displayCreateBet = true;
-@tracked validAmount = true;
->>>>>>> 3a2c70c8... merging with recent staging
 @tracked nameList = [];
 @tracked individualBet = {}
 @tracked betAgainst = null;
