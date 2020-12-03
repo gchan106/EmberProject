@@ -27,19 +27,22 @@
                     value = {{currentBetAmountValue}}
                     oninput = {{action inputBetAmountValue}}
                 >
+                {{#unless this.validAmount}}
+                    <p>Invalid amount (Cannot be negative).</p>
+                {{/unless}}
             </td>
             </tr>
 
             <tr>
             <td><br>
                 <label><b>Description of Bet</b></label> <br><br>
-                <input 
+                <textarea 
                     class = "bet_detail_input" 
                     id = "bet_description"
-                    type = "string"
+                    type = "text"
                     value = {{currentBetDescriptionValue}}
                     oninput = {{action inputBetDescriptionValue}}
-                >
+                />
                     
             </td>
             </tr>

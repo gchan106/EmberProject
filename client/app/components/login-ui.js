@@ -81,17 +81,19 @@ export default class LoginComponent extends Component {
             setTimeout(()=> {
                 this.status = false;
                 this.message = null;
-            }, 3000)            
+            }, 3000)    
+        }        
 
-                else
-                {
-                    this.logInSuccess = false;
-                }
-              });
+            //     else
+            //     {
+            //         this.logInSuccess = false;
+            //     }
+            //   });
              
         }
+        
 
-    }
+    
 
     dismissAlert(){
         this.status = false;
