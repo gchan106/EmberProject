@@ -28,7 +28,7 @@
                     oninput = {{action inputBetAmountValue}}
                 >
                 {{#unless this.validAmount}}
-                    <p>Invalid amount (Cannot be negative).</p>
+                    <p>Invalid amount.</p>
                 {{/unless}}
             </td>
             </tr>
@@ -90,12 +90,20 @@
 
     {{#if betResolution}}
                 <tr>
+                <th></th>
                  <th>Whose in on this Bet</th>
                  <th>Date Joined</th>
                  <th>Bet Standing</th>
                 </tr>
         {{#each individualBet.betData.betParticipants key = "index" as |nameList index| }}
+                
                 <tr>
+                 <td>
+                     <AddFriend 
+                     @model={{@model}}
+                     @userReqReceiver = {{nameList.userData.userName}}
+                    />
+                </td>  
                 <td>{{nameList.userData.userName}}</td>
                 <td>{{nameList.userData.userTime}}</td>
                 <td>{{#if nameList.userData.betSide }} Betting For

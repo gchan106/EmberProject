@@ -19,9 +19,9 @@
     <FriendsList
     @model={{@model}}
     />
-    <AddFriend
+    {{!-- <AddFriend
     @model={{@model}}
-    />
+    /> --}}
     </div>
     
     
@@ -38,8 +38,12 @@
     </div>
 
     <div class = 'right'>
-    <FriendsList/>
-    <AddFriend/>
+    <FriendsList
+     @model={{@model}}
+    />
+    {{!-- <AddFriend
+     @model={{@model}}
+    /> --}}
     </div>
     
 {{/if}}
@@ -60,9 +64,9 @@
     @model={{@model}}
     />
     
-    <AddFriend
+    {{!-- <AddFriend
     @model={{@model}}
-    />
+    /> --}}
     </div>
     
 {{/if}}

@@ -13,6 +13,21 @@ app.get('/friendlist', function(req, res) {
 app.get('/addfriend', function(req, res) {
   console.log(req.query.usernameRequest)
   console.log(req.query.usernameReceiver)
+
+  //if there is no entry in userFriends table for the account, make one (upsert)
+  //work on this after
+  req.app.get('locals.client').db('bettDb').collection('userFriends').findOne( {username: req.query.usernameRequester}, (err, foundEntry) => {
+    console.log("should be null since theres no entry", foundEntry)
+    if(!foundEntry)
+    {
+      req.app.get('locals.client').db('bettDb').collection('userFriends').
+        insertOne({
+            username: req.query.usernameRequest,
+            friendsWith: []},)
+    }
+  })
+
+
   // using username or unique ID of a friend, add it to username using mongo
   req.app.get('locals.client').db('bettDb').collection('userAccounts').findOne( {username: req.query.usernameReceiver}, (err, foundProfile) => {
     console.log(foundProfile)
@@ -23,7 +38,7 @@ app.get('/addfriend', function(req, res) {
       req.app.get('locals.client').db('bettDb').collection('userFriends').updateOne(
         {username: req.query.usernameRequest},
 
-        //apparently in the db right now, the friendsWith param is a string right now, I think it should be an array.
+        
         {$push: {"friendsWith": foundProfile}},
 
      ) 

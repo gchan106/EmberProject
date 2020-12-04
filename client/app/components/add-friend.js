@@ -26,18 +26,18 @@ export default class AddFriendComponent extends Component {
 
         //Change this hardcode to wherever the user clicks on the table.
         //for now continue with fake data to send to db
-        this.userReceiver = "Victoria"
+        this.userReceiver = this.args.userReqReceiver
     }
 
     addFriendClicked(){
         //on addFriend button click, send a request to the user sending the request 
         //to the other user receiving it. For now, once we click add friend on another profile
         //automatically add that friend to the current user loggedin.
-        //how do I traverse through other users' profiles to click this button? Right now its rendered automatically.
-        //created sample new user in db Victoria, will erase when committing
+       
         
         //console.log(this.userRequester.firstName + " is sending a friend request to " + this.userReceiver.firstName)
         
+        // console.log("add friend clicked, looking for this username" , this.userReceiver)
         $.get(`${ENV.APP.API_ENDPOINT}/friends/addfriend?usernameRequest=${this.userRequester}&usernameReceiver=${this.userReceiver}`).done(res => {
             console.log("What was sent back should be a bool true:" , res)
         })
