@@ -27,19 +27,22 @@
                     value = {{currentBetAmountValue}}
                     oninput = {{action inputBetAmountValue}}
                 >
+                {{#unless this.validAmount}}
+                    <p>Invalid amount.</p>
+                {{/unless}}
             </td>
             </tr>
 
             <tr>
             <td><br>
                 <label><b>Description of Bet</b></label> <br><br>
-                <input 
+                <textarea 
                     class = "bet_detail_input" 
                     id = "bet_description"
-                    type = "string"
+                    type = "text"
                     value = {{currentBetDescriptionValue}}
                     oninput = {{action inputBetDescriptionValue}}
-                >
+                />
                     
             </td>
             </tr>
@@ -87,12 +90,20 @@
 
     {{#if betResolution}}
                 <tr>
+                <th></th>
                  <th>Whose in on this Bet</th>
                  <th>Date Joined</th>
                  <th>Bet Standing</th>
                 </tr>
         {{#each individualBet.betData.betParticipants key = "index" as |nameList index| }}
+                
                 <tr>
+                 <td>
+                     <AddFriend 
+                     @model={{@model}}
+                     @userReqReceiver = {{nameList.userData.userName}}
+                    />
+                </td>  
                 <td>{{nameList.userData.userName}}</td>
                 <td>{{nameList.userData.userTime}}</td>
                 <td>{{#if nameList.userData.betSide }} Betting For

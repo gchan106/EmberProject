@@ -13,6 +13,8 @@ export default class IndividualBetComponent extends Component {
 @tracked displayCreateBet;
 @tracked nameList = [];
 @tracked individualBet = {}
+
+@tracked validAmount = true
 @tracked betAgainst = null;
 @tracked userIdNum;
 @tracked userData;
@@ -122,7 +124,21 @@ inputBetTitleValue(input){
     this.currentBetTitleValue  = input.target.value;    
 }
 inputBetAmountValue(input){
-    this.currentBetAmountValue  = input.target.value;   
+    this.currentBetAmountValue  = input.target.value; 
+    console.log("bet value" , this.currentBetAmountValue) 
+
+    if(this.currentBetAmountValue == "e")
+    {
+        this.validAmount = false;
+    }
+    
+    if(this.currentBetAmountValue <= 0)
+    {
+        this.validAmount = false;
+    }
+
+    else
+        this.validAmount = true
 }
 inputBetDescriptionValue(input){
     this.currentBetDescriptionValue  = input.target.value;    

@@ -16,9 +16,14 @@
     </div>
 
     <div class = 'right'>
-    <FriendsList/>
-    <AddFriend/>
+    <FriendsList
+    @model={{@model}}
+    />
+    {{!-- <AddFriend
+    @model={{@model}}
+    /> --}}
     </div>
+    
     
 {{/if}}
 
@@ -33,8 +38,12 @@
     </div>
 
     <div class = 'right'>
-    <FriendsList/>
-    <AddFriend/>
+    <FriendsList
+     @model={{@model}}
+    />
+    {{!-- <AddFriend
+     @model={{@model}}
+    /> --}}
     </div>
     
 {{/if}}
@@ -51,8 +60,13 @@
     </div>
 
     <div class = 'right'>
-    <FriendsList/>
-    <AddFriend/>
+    <FriendsList
+    @model={{@model}}
+    />
+    
+    {{!-- <AddFriend
+    @model={{@model}}
+    /> --}}
     </div>
     
 {{/if}}
