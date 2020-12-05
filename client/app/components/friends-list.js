@@ -1,8 +1,9 @@
 import Component from '@glimmer/component'
 import { tracked } from '@glimmer/tracking'
+import { action } from '@ember/object'
 import $ from 'jquery';
 import ENV from 'client/config/environment';
-//import { model } from 'mongoose';
+
 
 export default class FriendsListComponent extends Component {
 
@@ -26,5 +27,11 @@ export default class FriendsListComponent extends Component {
        
     }
 
-
+    @action 
+    deleteFriend(name){
+        let username = this.args.model.username;
+        $.get(`${ENV.APP.API_ENDPOINT}/friends/deleteFriend?username=`+username+`&name=`+name).done(updatedFriendsList=> { 
+                this.friendsListData = updatedFriendsList;
+        });
+    }
 }

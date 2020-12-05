@@ -51,5 +51,16 @@ app.get('/addfriend', function(req, res) {
   })
 
 });
+app.get('/deletefriend', function(req, res) {
+  let username = req.query.username;
+  let name = req.query.name;
+  let friendsList = [];
+
+
+  req.app.get('locals.client').db('bettDb').collection('userFriends').find().toArray((err,friendList)=>{
+    friendsList = friendList;
+  })
+  //update the db
+});
 
 module.exports = app;

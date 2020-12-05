@@ -12,6 +12,7 @@
     
     <img class="profile-pic" src={{friendData.img}} alt={{friendData.username}} />
     <p class="friend-name"> {{friendData.username}} </p>
+    <button onclick={{fn deleteFriend friendData.username}}>Delete</button>
 
     {{/each}}
 

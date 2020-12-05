@@ -8,12 +8,6 @@ export default class NavbarComponent extends Component {
     @service router;
 
     @action
-    redirectToSignUpPage(){
-        this.args.changePage('signup')
-        //this.router.transitionTo('signup');
-    }
-
-    @action
     redirectToProfilePage(){
         this.args.changePage('profile')
         // this.router.transitionTo('home');
