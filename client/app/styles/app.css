@@ -217,7 +217,7 @@ nav.topnav {
 .bet_title {
 	width: 100%;
 	margin: auto;
-	width: auto;
+	/* width: auto; */
 	padding: 20px;
 	background-color: rgb(68, 67, 67);
 }
@@ -339,6 +339,9 @@ nav.topnav {
 
 }
 
+.user-created-bets{
+	text-align: center;
+}
 
 /* Add a color to the active/current link */
 
