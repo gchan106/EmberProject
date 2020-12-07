@@ -123,7 +123,7 @@ mongo.connect(url, {
     friendsCollection.insertOne({
         username: 'daniel',
         friendsWith: [
-            {username: 'Jasper'}
+            {username: 'jasper'}
         ]
     }, (err, result) => {})
     activeBetsCollection.insertOne({
