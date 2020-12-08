@@ -13,7 +13,7 @@ export default class AddFriendComponent extends Component {
     @tracked userReceiver
     @tracked addFriendIsClicked = false
     @tracked addFriendSuccess = false
-
+    @tracked isFriend = false;
     
     constructor(){
         super(...arguments)
@@ -47,7 +47,25 @@ export default class AddFriendComponent extends Component {
         //also maybe update the friends list once friend added is confirmed
     }
 
+    get currentUser(){
+        if(this.args.model.username == this.args.userReqReceiver){
+            return true;
+        }
+    }
 
+    get currentFriend(){
+        let tempArray = [];
 
+        $.get(`${ENV.APP.API_ENDPOINT}/friends/friendlist?username=`+this.args.model.username).done(friendList => {
+            tempArray = friendList.friendsWith;
 
+            for(let i = 0; i < tempArray.length; i++){
+                if(tempArray[i].username == this.args.userReqReceiver){
+                    this.isFriend = true;
+                }
+            }
+        })
+
+        return this.isFriend;
+    }
 }

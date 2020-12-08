@@ -1,7 +1,13 @@
-<button onclick={{action addFriendClicked}} disabled={{this.addFriendIsClicked}}> 
-    {{#unless this.addFriendIsClicked}}Add Friend 
-    {{else}} Added
-    {{/unless}}
-    
-    
-   </button>
+{{#if currentUser}}
+    <p></p>
+{{else}}
+    {{#if currentFriend}}
+        <p></p>
+    {{else}}
+        <button onclick={{action addFriendClicked}} disabled={{this.addFriendIsClicked}}> 
+            {{#unless this.addFriendIsClicked}}Add Friend 
+            {{else}} Added
+            {{/unless}}   
+        </button>
+    {{/if}}
+{{/if}}
