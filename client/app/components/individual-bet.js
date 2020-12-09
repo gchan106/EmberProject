@@ -94,7 +94,7 @@ createBet(title, amount, detail){
             betAdmin: this.userData[0].username,
             betResolution: false,
             betDetail: detail,
-            betParticipants:[],
+            betParticipants:[]
         }
     }
     this.getTimeAndDate()
