@@ -48,7 +48,7 @@
             </tr>
         </table> <br>
 
-            <input 
+            {{!-- <input 
                 type="radio" 
                 name="betside"   
                 onclick={{action (mut betAgainst) true}}>
@@ -57,7 +57,7 @@
                 type="radio" 
                 name="betside"  
                 onclick={{action (mut betAgainst) false}}>
-            <label>Bet Against</label> <br>
+            <label>Bet Against</label> <br> --}}
 
     <button 
         class = "create_bet_button"
@@ -96,7 +96,7 @@
                  <th>Bet Standing</th>
                 </tr>
         {{#each individualBet.betData.betParticipants key = "index" as |nameList index| }}
-                
+            {{#if (not-eq index 0)}}
                 <tr>
                  <td>
                      <AddFriend 
@@ -109,7 +109,8 @@
                 <td>{{#if nameList.userData.betSide }} Betting For
                     {{else}} Betting Against {{/if}}
                 </td>
-                </tr>      
+                </tr>
+            {{/if}}     
         {{/each}}
     
     {{else}}
@@ -134,13 +135,18 @@
 <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Bet Against me on BetYa!" data-url="http://localhost:4200/" data-hashtags="BetYa" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <br><br><br><br>
         
-    {{#if this.checkAdmin}}
-                {{#if betResolution}}
+    {{#if (eq @model.username individualBet.betData.betAdmin)}}
+                {{!-- {{#if betResolution}}
                 <button class = "button_resolve" onclick={{action this.changeAdminResolvedBet}}> Bet Resolve</button>
                 <button class = "button_resolve"> Bet Unresolved</button>
                 {{else}}
                 <h3 class = "bet_resolved_text"> Bet Resolved</h3>
-                {{/if}}
+                {{/if}} --}}
+
+                {{!-- You can remove these 2 buttons --}}
+                <button>Resolve</button>
+                <button>Unresolve</button>
+                {{!-- You can remove these 2 buttons --}}
     {{else}}
             <input 
                 type="radio"
