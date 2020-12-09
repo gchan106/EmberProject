@@ -1,0 +1,25 @@
+.profile_pic {
+	/* height */
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+}
+
+.addFriendButton {
+	background-color: #4CAF50;
+	border-radius: 20px;
+	border: none;
+	color: white;
+	padding: 15px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.friend_name {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}

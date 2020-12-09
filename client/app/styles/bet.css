@@ -1,0 +1,139 @@
+.main_bet_page {
+	position: relative;
+	text-align: center;
+	align-content: center;
+	font-family: Baskerville;
+	margin: auto;
+	width: 60%;
+	background-color: rgb(84, 84, 84);
+	left: 30px;
+	color: #ff5900;
+}
+
+.bet_title {
+	width: 100%;
+	margin: auto;
+	width: auto;
+	padding: 20px;
+	background-color: rgb(68, 67, 67);
+}
+
+.bet_participant_table {
+	max-width: 600px;
+	width: 100%;
+	margin: auto;
+	width: auto;
+	padding: 40px;
+	background-color: rgb(225, 218, 218);
+	border-collapse: collapse;
+}
+
+.bet_input_field_table {
+	position: relative;
+	max-width: 400px;
+	width: 100%;
+	margin: auto;
+	width: auto;
+	padding: 40px;
+	background-color: rgb(225, 218, 218);
+}
+
+.bet_participant_table td {
+	border: 1px solid #ddd;
+	padding: 10px;
+}
+
+.bet_participant_table tr {
+	border: 1px solid #ddd;
+}
+
+.bet_participant_table th {
+	border: 1px solid #ddd;
+	padding: 10px;
+	width: 200px;
+}
+
+.bet_participant_table tr:nth-child(0) {
+	background-color: #c0bfbf;
+}
+
+.bet_participant_table tr:nth-child(odd) {
+	background-color: #c0bfbf;
+}
+
+.bet_participant_table tr:hover {
+	background-color: rgb(255, 254, 254);
+}
+
+.bet_resolved_text {
+	float: right;
+	border: 1px solid black;
+	padding: 10px;
+	background-color: rgb(84, 84, 84);
+	color: #ff5900;
+}
+
+.button_resolve {
+	float: right;
+	border: 1px solid black;
+	padding: 20px;
+	background-color: rgb(84, 84, 84);
+	color: #ff5900;
+}
+
+.button_resolve:hover {
+	background-color: rgb(196, 189, 189);
+}
+
+.bet_button_join {
+	float: left;
+}
+
+.create_bet {
+	padding-right: 30px;
+	padding-left: 30px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	background-color: rgb(68, 67, 67);
+}
+
+.bet_detail_input {
+	height: 100px;
+	width: 300px;
+}
+
+.bet_info {
+	max-width: 421px;
+	width: 100%;
+	margin: auto;
+	width: auto;
+	padding: 40px;
+	background-color: rgb(225, 218, 218);
+	border-collapse: collapse;
+	padding: 10px;
+	margin: auto;
+}
+
+.create_bet_button {
+	float: right;
+	background-color: rgb(68, 67, 67);
+	padding: 20px;
+	color: #ff5900;
+}
+
+.no_dots{
+    list-style-type: none;
+    padding-bottom: 15px;
+}
+
+.list_mybets_title{
+    text-decoration: none;
+    padding-left: 20px;
+    color: black;
+    font-family: sans-serif;
+    font-size: 14pt;
+}
+
+.list_mybets_title:hover{
+    text-decoration: underline;
+}
