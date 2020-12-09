@@ -14,15 +14,11 @@
         <td> {{betList.betData.betTitle}}</td>
         <td>$ {{betList.betData.betAmount}}.00</td>
         <td>{{betList.betData.betParticipants.0.userData.userTime}}</td>
-<<<<<<< HEAD
-          <th><button class="btn btn-success" onclick={{fn redirectToIndiv betList.betID}}> Join</button></th>  
-=======
           <th>
             <button><a href='#' class="bet_list" onclick={{fn redirectToIndiv betList.betID}}>
               {{if (eq @model.username betList.betData.betAdmin) "Resolve" "Join"}}
             </a></button>
           </th>
->>>>>>> 4c479087... Bet owner only can join other bets
       </tr>
     </tbody>
 {{/each}}
