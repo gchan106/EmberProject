@@ -15,9 +15,9 @@
         <td>$ {{betList.betData.betAmount}}.00</td>
         <td>{{betList.betData.betParticipants.0.userData.userTime}}</td>
           <th>
-            <button><a href='#' class="bet_list" onclick={{fn redirectToIndiv betList.betID}}>
+            <button class="btn btn-success" onclick={{fn redirectToIndiv betList.betID}}>
               {{if (eq @model.username betList.betData.betAdmin) "Resolve" "Join"}}
-            </a></button>
+            </button>
           </th>
       </tr>
     </tbody>
