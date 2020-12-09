@@ -8,12 +8,13 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMzk2fQ&w=1000&q=80");
+    background-image: linear-gradient(to right, rgb(11, 77, 33), rgb(54, 143, 61));
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Raleway', sans-serif;
+    color: white;
 }
 
 .left{
@@ -23,14 +24,32 @@ body{
 
 }
 .right{
+    color: white;
+
 	float: right;
-	width: 15%;
+	width: 250px;
 	padding-left: 15px;
-	border-left: 1px solid #ff5900;
+
+    padding-bottom: 30px;
 
 }
 
 .temp{
     margin: 16px 0px;
     padding: 0;
+}
+
+.jumbotron {
+    color: white;
+    background-image: url("https://live.staticflickr.com/5342/8969117237_3ca6fa687e_b.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 200px;
+    margin: 0;
+
+
+  }
+td a{
+    color: white;
 }

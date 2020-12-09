@@ -23,3 +23,8 @@
 .friend_name {
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
+.friends-list{
+	border-radius: 15px 0px 0px 15px ;
+	background-color: #333;
+	padding: 15px;
+}

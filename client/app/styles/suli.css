@@ -10,7 +10,11 @@
     background-color: rgb(0, 0, 0, .2);
     box-shadow: 0 0 8px 0 black;
 }
+.divider-box{
+    background-color: #333;
+    height: 45px;
 
+}
 .suli{
     margin: 21.44px 0;
     height: 37px;
@@ -19,6 +23,7 @@
 }
 
 .welcome h1{
+    color: rgb(12, 12, 12);
     margin: 30.15px 0;
     font-size: 45px;
     font-weight: bold;
@@ -194,4 +199,7 @@ a{
 .suli_para{
     margin: 17px;
     line-height: initial;
+}
+a{
+    color:white;
 }
