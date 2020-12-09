@@ -1,179 +1,22 @@
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 @import "https://fonts.googleapis.com/css2?family=Raleway:wght@200";
-@import "login.css";
-@import "signup.css";
+@import "suli.css";
+@import "friend.css";
+@import "bet.css";
+@import "navbar.css";
 
 body{
     margin: 0;
     padding: 0;
-    background-image: url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMzk2fQ&w=1000&q=80");
+    background-image: linear-gradient(to right, rgb(11, 77, 33), rgb(54, 143, 61));
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Raleway', sans-serif;
-}
-
-.welcome h1{
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 45px;
-    text-align: center;
-    width: 600px;
-}
-
-.icon{
-    font-size: 20px;
-}
-
-.input_box{
-    width: 100%;
-    padding: 10px 0;
-    margin: 10px 0;
-    text-align: center;
-    position: relative;
-}
-
-.input_box i{
-    position: absolute;
-    left: 0;
-    top: 8px;
-    padding: 10px 0px 10px 57px;
-    width: 20px;
-    color: #aaa;
-    transition: .3s;
-}
-
-input:focus{
-    border-color: dodgerblue;
-    box-shadow: 0 0 8px 0 dodgerblue;
-}
-
-.input_box input[type="text"]:focus + i, .input-box input[type="password"]:focus + i{
-    color: dodgerblue;
-}
-
-.input_box input[type="password"], input[type="text"]{
-    padding-left: 30px;
-    width: 220px;
-    height: 30px;
-    font-size: 17px;
-    outline: none;
-    border-radius: 4px;
-}
-
-.btn{
-    margin: auto;
-    width: 80%;
-    border: 2px solid;
-    padding: 10px ;
-    font-size: 16px;
-    border-radius: 20px;
-    display: flex; 
-    justify-content: center; 
-    border-color: dodgerblue;
-}
-
-.btn:hover{
-    cursor: pointer;
-    background-color: dodgerblue;
     color: white;
-    box-shadow: 0 0 8px 0 dodgerblue;
-    transition-duration: .5s;
-}
-button:focus{
-    outline: none;
-}
-
-.tom{
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-}
-
-a{
-    color: black;
-}
-
-/* Add a black background color to the top navigation */
-
-body {
-	margin: 0;
-}
-
-nav.topnav {
-	background-color: #333;
-	overflow: hidden;
-	width: 100%;
-	height: 50px;
-	vertical-align: middle;
-}
-
-
-/* Style the links inside the navigation bar */
-
-.topnav button {
-	padding: 0;
-	border: none;
-	vertical-align: middle;
-	background: none;
-	float: left;
-	color: #f2f2f2;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-size: 17px;
-}
-
-.topnav .btnHeader {
-	font-size: 1.5em;
-}
-
-.topnav .btnSignUp {
-	float: right;
-	background-color: #333;
-	color: #f2f2f2;
-	padding: 8px 20px;
-	text-align: center;
-	text-decoration: none;
-	/* display: inline-block; */
-	margin: 4px 2px;
-	cursor: pointer;
-	border-radius: 16px;
-	border: 2px solid #7aebcb;
-}
-
-.topnav .btnSignOut {
-	float: right;
-	background-color: #333;
-	color: #f2f2f2;
-	padding: 8px 20px;
-	text-align: center;
-	text-decoration: none;
-	/* display: inline-block; */
-	margin: 4px 2px;
-	cursor: pointer;
-	border-radius: 16px;
-	border: 2px solid #7aebcb;
-}
-
-
-/* Change the color of links on hover */
-
-.topnav button:hover {
-	background-color: #ddd;
-	color: black;
-}
-
-
-/* Add a color to the active/current link */
-
-
-/* .topnav button.active {
-    background-color: #4CAF50;
-    color: white;
+<<<<<<< HEAD
+=======
   } */
 
 .profile-pic {
@@ -323,6 +166,7 @@ nav.topnav {
 	background-color: rgb(68, 67, 67);
 	padding: 20px;
 	color: #ff5900;
+>>>>>>> 98505ae9... bug fixes
 }
 
 .left{
@@ -332,9 +176,13 @@ nav.topnav {
 
 }
 .right{
+    color: white;
+
 	float: right;
-	width: 15%;
+	width: 250px;
 	padding-left: 15px;
+<<<<<<< HEAD
+=======
 	border-left: 1px solid #ff5900;
 
 }
@@ -344,33 +192,28 @@ nav.topnav {
 }
 
 /* Add a color to the active/current link */
+>>>>>>> 98505ae9... bug fixes
 
+    padding-bottom: 30px;
 
-/* .topnav button.active {
-    background-color: #4CAF50;
+}
+
+.temp{
+    margin: 16px 0px;
+    padding: 0;
+}
+
+.jumbotron {
     color: white;
-  } */
-.activityStatusActive{
-    color: green;
-}
+    background-image: url("https://live.staticflickr.com/5342/8969117237_3ca6fa687e_b.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 200px;
+    margin: 0;
 
-.activityStatusInactive{
-    color: red;
-}
 
-.no-dots{
-    list-style-type: none;
-    padding-bottom: 15px;
-}
-
-.list-mybets-title{
-    text-decoration: none;
-    padding-left: 20px;
-    color: black;
-    font-family: sans-serif;
-    font-size: 14pt;
-}
-
-.list-mybets-title:hover{
-    text-decoration: underline;
+  }
+td a{
+    color: white;
 }

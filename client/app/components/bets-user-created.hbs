@@ -1,8 +1,7 @@
 <div class="container">
  <div class="table-responsive">
-         <h3 class="mybets-heading">Active Bets {{@model.username}} Has Created</h3>   
-         <div class="user-created-bets">       
-  <table class="table">
+         <b><h3 class="mybets-heading">Active Bets {{@model.username}} Has Created</h3> </b>         
+  <table class="table table-dark table-hover">
           <thead>
       <tr>
         <th>Bet Title</th>
@@ -19,16 +18,17 @@
         <td><a href='#' class="bet_list" onclick={{fn redirectToIndiv betsCreated.betID}}> {{betsCreated.betData.betTitle}}</a> </td>
         <td>$ {{betsCreated.betData.betAmount}}.00</td>
         <td>{{betsCreated.betData.betParticipants.0.userData.userTime}}</td>
-        <th><button><a href='#' class="bet_list" onclick={{fn deleteBet betsCreated.betID}}> Delete</a></button></th>  
+        <th><button class="btn btn-success" onclick={{fn deleteBet betsCreated.betID}}> Delete</button></th>  
       </tr>
     </tbody>
     
+    
 {{/each}}
     {{else}}
-    <p class="no-created-bets">You have not created any bets</p>
+    <p class="no-created-bets"> You have not created any bets</p>
     {{/if}}
 
   </table>
   </div>
   </div>
-</div>
+

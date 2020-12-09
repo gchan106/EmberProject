@@ -1,6 +1,6 @@
 
 
-<body class= "main_bet_page">
+<div class= "main_bet_page">
 
 {{#if this.getDisplay}}
     <h1 class = "create_bet" > Create a Bet</h1>
@@ -72,7 +72,7 @@
         Create Bet</button>
 
 {{else}}
-        <h1 class= "bet_title"></h1>
+   
 
     {{#if this.Admin}}
         <h2 class = "display_individual_bet" >{{this.individualBet.betData.betTitle}}</h2>
@@ -165,4 +165,4 @@
                 Join Bet</button>        
     {{/if}}
 {{/if}}
-</body>
+</div>

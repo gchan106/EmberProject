@@ -20,7 +20,6 @@ export default class SignupComponent extends Component {
         if(this.userName && this.userPass){
             $.post(`${ENV.APP.API_ENDPOINT}/auth/signup`, ({username: this.userName,password: this.userPass}), (result)=>{
                 if(result){
-                    this.message = "Signed up successfully!"
                     this.status = true;
                     this.router.transitionTo('login', {queryParams: {signedup: this.status}});              
                 }

@@ -4,7 +4,8 @@
     {{#if currentFriend}}
         <p></p>
     {{else}}
-        <button onclick={{action addFriendClicked}} disabled={{this.addFriendIsClicked}}> 
+        <button class="btn btn-success" onclick={{action addFriendClicked}} disabled={{this.addFriendIsClicked}}> 
+            
             {{#unless this.addFriendIsClicked}}Add Friend 
             {{else}} Added
             {{/unless}}   
