@@ -13,30 +13,64 @@ const TEMPORARY_DEMO_COOKIE_2 = 123;
 
 
 const mongo = require('mongodb').MongoClient
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb+srv://gchanillustration:dragon3822@cluster0.axbhx.mongodb.net/bettDB?retryWrites=true&w=majority';
+//const url = 'mongodb://localhost:27017';
+
+//const { MongoClient } = require('mongodb');
+//const uri = "mongodb+srv://gchanillustration:csc511@cluster0.axbhx.mongodb.net/betDB?retryWrites=true&w=majority";
+//const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+//client.connect(err => {
+  //const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+//  client.close();
+//});
 
 mongo.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, (err, client) => {
     if (err) {
-        return
+        return console.log(err);
     }
+    console.log('Successful Connection to Mongo in index.js');
     app.set('locals.client', client);
-    client.db('bettDb').dropDatabase();
-    const db = client.db('bettDb');
-    simpleTestCollection = db.collection('test');
-    const db1 = client.db('bettDb');
-    userAccountsCollection = db1.collection('userAccounts');
-    const db2 = client.db('bettDb');
-    friendsCollection = db2.collection('userFriends');
-    const db3 = client.db('bettDb');
-    activeBetsCollection = db3.collection('activeBets');
-    const db4 = client.db('bettDb');
-    userBetsCollection = db4.collection('userBets');
-    const db5 = client.db('bettDb');
-    indivBetCollection = db5.collection('indivBet');
+    const db = client.db();
 
+    const indivBetCollection = db.collection('indivBet');
+    indivBetCollection.insertOne({
+
+        betID: '001',
+        betData: {             
+            betTitle: 'DRicks Bet',
+            betAmount: 20,
+            betAdmin: 'Rick',
+            isAdmin: true, 
+            betResolution: false,
+            displayCreateBet: false,
+            betDetail: 'Jerry will fail to impress Rick',
+            betParticipants:[
+                {userID:'101',userData:{userName: 'Rick', userTime: '1:00', betSide: false, }},
+                {userID:'102',userData:{userName: 'Rick', userTime: '1:00', betSide: false, }}
+            ],
+
+        }
+    })
+    app.locals.db = db;
+    console.log(app.locals.db);
+    //client.db('bettDb').dropDatabase();
+    //const db = client.db('bettDb');
+    //simpleTestCollection = db.collection('test');
+    //const db1 = client.db('bettDb');
+    //userAccountsCollection = db1.collection('userAccounts');
+    //const db2 = client.db('bettDb');
+    //friendsCollection = db2.collection('userFriends');
+    //const db3 = client.db('bettDb');
+    //activeBetsCollection = db3.collection('activeBets');
+    //const db4 = client.db('bettDb');
+    //userBetsCollection = db4.collection('userBets');
+    //const db5 = client.db('bettDb');
+    //indivBetCollection = db5.collection('indivBet');
+/** 
     indivBetCollection.insertOne({
 
         betID: '001',
@@ -147,6 +181,7 @@ mongo.connect(url, {
             res.json(items);
         })
     });
+    */
     app.get('/test', function(req, res) {
  res.json(req.query.username)
 });

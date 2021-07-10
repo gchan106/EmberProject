@@ -6,7 +6,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "fb-watchman": "^2.0.1",
-    "mongodb": "^3.6.3",
+    "mongodb": "^3.6.10",
     "nodemon": "^2.0.6"
   },
   "devDependencies": {
