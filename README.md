@@ -1,4 +1,4 @@
-# EmberProjectt
+# EmberProject
 This contains both Client and Server folders such that they can be started at the same time.
 
 ## Prerequisites
