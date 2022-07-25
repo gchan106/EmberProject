@@ -12,12 +12,12 @@ const TEMPORARY_DEMO_COOKIE_1 = 123123123;
 const TEMPORARY_DEMO_COOKIE_2 = 123;
 
 
-const mongo = require('mongodb').MongoClient
-const url = 'mongodb+srv://gchanillustration:dragon3822@cluster0.axbhx.mongodb.net/bettDB?retryWrites=true&w=majority';
+const mongo = require('mongodb').MongoClient;
+
 //const url = 'mongodb://localhost:27017';
 
 //const { MongoClient } = require('mongodb');
-//const uri = "mongodb+srv://gchanillustration:csc511@cluster0.axbhx.mongodb.net/betDB?retryWrites=true&w=majority";
+
 //const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 //client.connect(err => {
   //const collection = client.db("test").collection("devices");
